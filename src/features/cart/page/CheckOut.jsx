@@ -105,7 +105,7 @@ const Checkout = () => {
         });
 
         return [
-            "Hello eehook Team,",
+            "Hello Team,",
             "",
             `I placed an order via WhatsApp. Order: ORD-${String(orderId).padStart(6, "0")}`,
             "",
@@ -258,17 +258,17 @@ const Checkout = () => {
     }
         return (
 
-        <div className="eehook-checkout">
+        <div className="life-line-checkout">
 
-            <div className="eehook-checkout-header">
+            <div className="life-line-checkout-header">
 
-                <h1 className="eehook-checkout-title">
+                <h1 className="life-line-checkout-title">
 
                     Checkout
 
                 </h1>
 
-                <p className="eehook-checkout-subtitle">
+                <p className="life-line-checkout-subtitle">
 
                     Choose Stripe, Cash on Delivery, or send your order through WhatsApp.
 
@@ -278,13 +278,13 @@ const Checkout = () => {
 
             </div>
 
-            <div className="eehook-checkout-wrapper">
+            <div className="life-line-checkout-wrapper">
 
-                <div className="eehook-checkout-left">
+                <div className="life-line-checkout-left">
 
-                    <div className="eehook-checkout-card">
+                    <div className="life-line-checkout-card">
 
-                        <div className="eehook-card-header">
+                        <div className="life-line-card-header">
 
                             <h2>
 
@@ -293,7 +293,7 @@ const Checkout = () => {
                             </h2>
 
                             <button
-                                className="eehook-add-address-btn"
+                                className="life-line-add-address-btn"
                                 onClick={() => navigate("/profile")}
                             >
 
@@ -307,7 +307,7 @@ const Checkout = () => {
 
                             addresses.length === 0 ?
 
-                                <div className="eehook-empty-box">
+                                <div className="life-line-empty-box">
 
                                     <p>
 
@@ -323,7 +323,7 @@ const Checkout = () => {
 
                                     <div
                                         key={address.id}
-                                        className={`eehook-address-card ${
+                                        className={`life-line-address-card ${
                                             selectedAddress === address.id
                                                 ? "active"
                                                 : ""
@@ -343,7 +343,7 @@ const Checkout = () => {
                                             }
                                         />
 
-                                        <div className="eehook-address-info">
+                                        <div className="life-line-address-info">
 
                                             <h4>
 
@@ -386,7 +386,7 @@ const Checkout = () => {
 
                     </div>
 
-                    <div className="eehook-checkout-card">
+                    <div className="life-line-checkout-card">
 
                         <h2>
 
@@ -394,9 +394,9 @@ const Checkout = () => {
 
                         </h2>
 
-                        <div className="eehook-payment-card">
+                        <div className="life-line-payment-card">
 
-                            <div className="eehook-payment-title">
+                            <div className="life-line-payment-title">
 
                             Choose how to place your order
 
@@ -408,7 +408,7 @@ const Checkout = () => {
 
                             </p>
 
-                            <label className={`eehook-payment-option ${paymentMethod === "STRIPE" ? "active" : ""}`}>
+                            <label className={`life-line-payment-option ${paymentMethod === "STRIPE" ? "active" : ""}`}>
                                 <input
                                     type="radio"
                                     name="payment-method"
@@ -422,7 +422,7 @@ const Checkout = () => {
                                 </span>
                             </label>
 
-                            <label className={`eehook-payment-option ${paymentMethod === "COD" ? "active" : ""}`}>
+                            <label className={`life-line-payment-option ${paymentMethod === "COD" ? "active" : ""}`}>
                                 <input
                                     type="radio"
                                     name="payment-method"
@@ -436,7 +436,7 @@ const Checkout = () => {
                                 </span>
                             </label>
 
-                            <label className={`eehook-payment-option ${paymentMethod === "WHATSAPP" ? "active" : ""}`}>
+                            <label className={`life-line-payment-option ${paymentMethod === "WHATSAPP" ? "active" : ""}`}>
                                 <input
                                     type="radio"
                                     name="payment-method"
@@ -456,9 +456,9 @@ const Checkout = () => {
 
                 </div>
 
-                <div className="eehook-checkout-right">
+                <div className="life-line-checkout-right">
 
-                    <div className="eehook-checkout-card">
+                    <div className="life-line-checkout-card">
 
                         <h2>
 
@@ -470,7 +470,7 @@ const Checkout = () => {
 
                             cartItems.length === 0 ?
 
-                                <div className="eehook-empty-box">
+                                <div className="life-line-empty-box">
 
                                     <p>
 
@@ -486,10 +486,10 @@ const Checkout = () => {
 
                                     <div
                                         key={item.id}
-                                        className="eehook-summary-item"
+                                        className="life-line-summary-item"
                                     >
 
-                                        <div className="eehook-summary-image">
+                                        <div className="life-line-summary-image">
 
                                             <img
                                                 src={getImageUrl(item.product_image)}
@@ -498,7 +498,7 @@ const Checkout = () => {
 
                                         </div>
 
-                                        <div className="eehook-summary-details">
+                                        <div className="life-line-summary-details">
 
                                             <h4>
 
@@ -534,7 +534,7 @@ const Checkout = () => {
 
                                         </div>
 
-                                        <div className="eehook-summary-price">
+                                        <div className="life-line-summary-price">
 
                                             <DirhamAmount value={Number(item.total_price)} />
 
@@ -546,10 +546,10 @@ const Checkout = () => {
 
                         }
 
-                        <div className="eehook-summary-total">
-                                                        <div className="eehook-summary-row">
+                        <div className="life-line-summary-total">
+                                                        <div className="life-line-summary-row">
 
-                                <span className="eehook-subtotal-label">
+                                <span className="life-line-subtotal-label">
 
                                     <span>Subtotal</span>
                                     <small>Price includes 5% VAT</small>
@@ -564,7 +564,7 @@ const Checkout = () => {
 
                             </div>
 
-                            {/* <div className="eehook-summary-row">
+                            {/* <div className="life-line-summary-row">
 
                                 <span>
 
@@ -586,7 +586,7 @@ const Checkout = () => {
                             </div> */}
 
                             {cartSummary.shipping > 0 && (
-                                <div className="eehook-summary-row">
+                                <div className="life-line-summary-row">
 
                                     <span>
 
@@ -603,7 +603,7 @@ const Checkout = () => {
                                 </div>
                             )}
 
-                            <div className="eehook-summary-row">
+                            <div className="life-line-summary-row">
 
                                 <span>
 
@@ -619,9 +619,9 @@ const Checkout = () => {
 
                             </div>
 
-                            <div className="eehook-summary-divider"></div>
+                            <div className="life-line-summary-divider"></div>
 
-                            <div className="eehook-grand-total">
+                            <div className="life-line-grand-total">
 
                                 <div>
 
@@ -644,7 +644,7 @@ const Checkout = () => {
                         </div>
 
                         <button
-                            className="eehook-checkout-btn"
+                            className="life-line-checkout-btn"
                             onClick={placeOrder}
                             disabled={processing || cartItems.length === 0}
                         >
@@ -669,7 +669,7 @@ const Checkout = () => {
 
                         </button>
 
-                        <p className="eehook-payment-note">
+                        <p className="life-line-payment-note">
 
                             {paymentMethod === "STRIPE"
                                 ? "You will be redirected to Stripe to complete your payment securely."

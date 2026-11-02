@@ -8,7 +8,7 @@ import { getProductDetailsPath } from "../../../utils/productUrl";
 import showToast from "../../../utils/toast";
 import { FiDownload } from "react-icons/fi";
 
-const formatOrderNumber = (id) => `EHK26/${String(id).padStart(4, "0")}`;
+const formatOrderNumber = (id) => `LL26/${String(id).padStart(4, "0")}`;
 const isPaidOrder = (order) => String(order?.payment_status || "").toLowerCase() === "paid";
 
 const MyOrders = () => {
@@ -62,7 +62,7 @@ const MyOrders = () => {
                 : new Blob([response.data], { type: "application/pdf" });
             const contentDisposition = response.headers?.["content-disposition"] || "";
             const filename = contentDisposition.match(/filename="?([^";]+)"?/i)?.[1]
-                || `EHK26-${String(orderId).padStart(4, "0")}-tax-invoice.pdf`;
+                || `LL26-${String(orderId).padStart(4, "0")}-tax-invoice.pdf`;
             const url = URL.createObjectURL(blob);
             const link = document.createElement("a");
             link.href = url;

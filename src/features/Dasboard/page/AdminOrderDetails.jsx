@@ -139,7 +139,7 @@ const OrderDetails = () => {
 
                     <button
                         className="admin-print-btn"
-                        onClick={() => navigate(`/eehook-dashboard/invoice/${order.id}`)}
+                        onClick={() => navigate(`/admin-dashboard/invoice/${order.id}`)}
                     >
                         🖨 Print Invoice
                     </button>

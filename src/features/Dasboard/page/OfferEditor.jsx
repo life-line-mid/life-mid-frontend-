@@ -198,7 +198,7 @@ export default function OfferEditor() {
             if (editing) await updateResource("offers", id, payload);
             else await createResource("offers", payload);
             toast.success(`Offer ${editing ? "updated" : "created"} successfully`);
-            navigate("/eehook-dashboard/offers", { replace: true });
+            navigate("/admin-dashboard/offers", { replace: true });
         } catch (requestError) {
             setError(getErrorMessage(requestError, "Could not save offer."));
             toast.error(getErrorMessage(requestError, "Could not save offer."));
@@ -209,7 +209,7 @@ export default function OfferEditor() {
 
     if (loading) return <div className="admin-page"><LoadingState label="Loading offer editor..." /></div>;
     return <div className="admin-page offer-editor-page">
-        <button type="button" className="admin-back-link" onClick={() => navigate("/eehook-dashboard/offers")}>Back to Offers</button>
+        <button type="button" className="admin-back-link" onClick={() => navigate("/admin-dashboard/offers")}>Back to Offers</button>
         <div className="admin-page-header"><div><p className="admin-eyebrow">OFFER MANAGEMENT</p><h2>{editing ? "Edit Offer" : "Create Offer"}</h2><p>Select the product and decide whether the offer applies to all variants or selected variants.</p></div></div>
         <form className="admin-panel admin-form offer-editor-form" onSubmit={save}>
             <div className="admin-form-grid">
@@ -248,7 +248,7 @@ export default function OfferEditor() {
             </section>
             <label className="admin-form-field offer-active-toggle"><span>Active</span><input type="checkbox" checked={Boolean(form.is_active)} onChange={(event) => update("is_active", event.target.checked)} /></label>
             {error && <p className="admin-form-error">{error}</p>}
-            <div className="admin-modal-actions"><button type="button" className="admin-button secondary" onClick={() => navigate("/eehook-dashboard/offers")}>Cancel</button><button className="admin-button primary" disabled={saving}><FiSave /> {saving ? "Saving..." : "Save Offer"}</button></div>
+            <div className="admin-modal-actions"><button type="button" className="admin-button secondary" onClick={() => navigate("/admin-dashboard/offers")}>Cancel</button><button className="admin-button primary" disabled={saving}><FiSave /> {saving ? "Saving..." : "Save Offer"}</button></div>
         </form>
     </div>;
 }

@@ -10,8 +10,8 @@ import Homepage_Query from "./queries/Homepage_Query";
 import Product_Query from "../sale/queries/Product_Query";
 import Offer_poster from "../../hooks/offers/page/Offer_poster";
 import ContactUs from "../../components/Contact";
-import vedio1 from "../../assets/eehook-video-one.mp4";
-import vedio2 from "../../assets/eehook-video-two.mp4";
+import vedio1 from "../../assets/life-line-video-one.mp4";
+import vedio2 from "../../assets/life-line-video-two.mp4";
 
 const asArray = (value) => {
     if (Array.isArray(value)) return value;
@@ -154,7 +154,7 @@ function Home() {
                 <div className="section-heritage-text">
                     <span className="heritage-tag">OUR PROMISE</span>
                     <h2>Innovation Meets Premium Lifestyle</h2>
-                    <p>At eehook, every product is selected with a focus on quality, performance, and modern design. From powerful electronics to top-tier cosmetics, our collections are thoughtfully curated for customers who value excellence.</p>
+                    <p>At life-line, every product is selected with a focus on quality, performance, and modern design. From powerful electronics to top-tier cosmetics, our collections are thoughtfully curated for customers who value excellence.</p>
                     <p>Blending the latest tech trends with lifestyle essentials, we create a shopping experience that elevates your everyday life.</p>
                 </div>
 

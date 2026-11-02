@@ -4,6 +4,7 @@ import client from "../../../lib/ApiClient";
 import "../styles/Invoice.css";
 import { getImageUrl } from "../../../utils/imageUrl";
 import DirhamAmount from "../../../components/DirhamAmount";
+import { CONTACT_EMAIL } from "../../../config/contact";
 
 const Invoice = () => {
 
@@ -111,15 +112,15 @@ const Invoice = () => {
                     <div className="invoice-company">
 
                         <h1>
-                            eehook
+                            life-line
                         </h1>
 
                         <p>
-                            Dubai, United Arab Emirates
+                            Project location to be configured
                         </p>
 
                         <p>
-                            info@eehook.com
+                            {CONTACT_EMAIL}
                         </p>
 
                     </div>
@@ -410,7 +411,7 @@ const Invoice = () => {
 
                         <p>
                             Thank you for shopping with
-                            <strong> eehook </strong>.
+                            <strong> life-line </strong>.
                         </p>
 
                         <p>
@@ -422,7 +423,7 @@ const Invoice = () => {
                             Email :
                             <strong>
                                 {" "}
-                                info@eehook.com
+                                {CONTACT_EMAIL}
                             </strong>
                         </p>
 

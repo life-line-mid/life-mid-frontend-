@@ -14,7 +14,7 @@ function App() {
     const location = useLocation();
     const [authReady, setAuthReady] = useState(false);
     const normalizedPath = location.pathname.toLowerCase();
-    const isAdminPage = normalizedPath.startsWith("/eehook-dashboard") || normalizedPath.startsWith("/orderdashboard") || normalizedPath.startsWith("/order-dashboard");
+    const isAdminPage = normalizedPath.startsWith("/admin-dashboard") || normalizedPath.startsWith("/orderdashboard") || normalizedPath.startsWith("/order-dashboard");
 
     useEffect(() => {
         let active = true;

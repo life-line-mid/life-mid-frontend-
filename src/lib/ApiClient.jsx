@@ -11,8 +11,8 @@ let csrfToken = "";
 function redirectToLogin() {
     clearAuthSession();
     const normalizedPath = window.location.pathname.toLowerCase();
-    const isOrderDashboardPath = normalizedPath.startsWith("/eehook-dashboard") || normalizedPath.startsWith("/order-dashboard") || normalizedPath.startsWith("/orderdashboard");
-    const path = isOrderDashboardPath ? "/eehook-dashboard/admin-login" : "/login";
+    const isOrderDashboardPath = normalizedPath.startsWith("/admin-dashboard") || normalizedPath.startsWith("/order-dashboard") || normalizedPath.startsWith("/orderdashboard");
+    const path = isOrderDashboardPath ? "/admin-dashboard/admin-login" : "/login";
     if (window.location.pathname !== path) window.location.href = path;
 }
 
@@ -28,7 +28,7 @@ function isAuthRequest(config = {}) {
 
 export function getAuthScope(pathname = typeof window === "undefined" ? "" : window.location.pathname) {
     const normalizedPath = String(pathname || "").toLowerCase();
-    return normalizedPath.startsWith("/eehook-dashboard")
+    return normalizedPath.startsWith("/admin-dashboard")
         || normalizedPath.startsWith("/order-dashboard")
         || normalizedPath.startsWith("/orderdashboard")
         ? "admin"

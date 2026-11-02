@@ -28,11 +28,11 @@ export default function AdminLogin() {
             saveAuthSession(response.data);
             const requestedPath = location.state?.from;
             const requestedPathname = requestedPath?.pathname || "";
-            const isDashboardPath = /^\/(?:eehook-dashboard|order-dashboard|orderDashboard)(?:\/|$)/i.test(requestedPathname);
+            const isDashboardPath = /^\/(?:admin-dashboard|order-dashboard|orderDashboard)(?:\/|$)/i.test(requestedPathname);
             const isAdminLoginPath = /\/admin-login$/i.test(requestedPathname);
             const destination = isDashboardPath && !isAdminLoginPath
                 ? `${requestedPathname}${requestedPath.search || ""}${requestedPath.hash || ""}`
-                : "/eehook-dashboard";
+                : "/admin-dashboard";
             navigate(destination, { replace: true });
         } catch (requestError) {
             if (requestError.response?.status === 429) {
@@ -46,5 +46,5 @@ export default function AdminLogin() {
             }
         } finally { setLoading(false); }
     };
-    return <div className="login-container"><div className="login-wrapper"><div className="login-box"><div className="auth-header"><h1>Super Admin Login</h1><p>Sign in to manage the eehook dashboard.</p></div><form onSubmit={submit}><div className="input-group"><label>Email Address</label><input type="email" value={form.email} onChange={(event) => setForm({ ...form, email: event.target.value })} required /></div><div className="input-group"><label>Password</label><input type="password" value={form.password} onChange={(event) => setForm({ ...form, password: event.target.value })} required /></div>{error && <p className="admin-login-error" role="alert">{error}</p>}<button type="submit" className="login-btn" disabled={loading || retryAfter > 0}>{loading ? "Signing In..." : retryAfter > 0 ? `Try again in ${retryAfter}s` : "Login"}</button></form></div></div></div>;
+    return <div className="login-container"><div className="login-wrapper"><div className="login-box"><div className="auth-header"><h1>Super Admin Login</h1><p>Sign in to manage the life-line dashboard.</p></div><form onSubmit={submit}><div className="input-group"><label>Email Address</label><input type="email" value={form.email} onChange={(event) => setForm({ ...form, email: event.target.value })} required /></div><div className="input-group"><label>Password</label><input type="password" value={form.password} onChange={(event) => setForm({ ...form, password: event.target.value })} required /></div>{error && <p className="admin-login-error" role="alert">{error}</p>}<button type="submit" className="login-btn" disabled={loading || retryAfter > 0}>{loading ? "Signing In..." : retryAfter > 0 ? `Try again in ${retryAfter}s` : "Login"}</button></form></div></div></div>;
 }

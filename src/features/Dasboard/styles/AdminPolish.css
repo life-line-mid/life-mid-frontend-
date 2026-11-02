@@ -1130,7 +1130,7 @@
     }
 }
 
-/* The sidebar brand uses a deliberate crop of the wide eehook logo. The
+/* The sidebar brand uses a deliberate crop of the wide life-line logo. The
    generic responsive image rule above must not shrink that crop back to the
    62px container, otherwise the artwork is positioned entirely out of view. */
 .admin-app .admin-brand-logo {

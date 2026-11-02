@@ -29,7 +29,12 @@ const ContactUs = () => {
             return;
         }
 
-        const text = `Hello eehook Team,
+        if (!WHATSAPP_NUMBER) {
+            alert("WhatsApp contact is not configured yet.");
+            return;
+        }
+
+        const text = `Hello Team,
 
 Name: ${name}
 

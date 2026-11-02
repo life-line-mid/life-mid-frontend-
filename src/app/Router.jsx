@@ -25,12 +25,12 @@ import ProtectedRoute from '../features/auth/page/ProtectedRoute'
 import Unauthorized from '../features/auth/page/Unauthorized'
 function LegacyOrderDetailsRedirect() {
     const { id } = useParams();
-    return <Navigate to={`/eehook-dashboard/orders/${id}`} replace />;
+    return <Navigate to={`/admin-dashboard/orders/${id}`} replace />;
 }
 
 function LegacyDashboardPathRedirect() {
     const location = useLocation();
-    const nextPath = location.pathname.replace(/^\/(?:order-dashboard|orderdashboard)/i, "/eehook-dashboard");
+    const nextPath = location.pathname.replace(/^\/(?:order-dashboard|orderdashboard)/i, "/admin-dashboard");
     return <Navigate to={`${nextPath}${location.search}${location.hash}`} replace />;
 }
 
@@ -82,56 +82,56 @@ function Router() {
 
                 <Route path='login' element={<Login />} />
                 <Route path='admin-login' element={<AdminLogin />} />
-                <Route path='eehook-dashboard/admin-login' element={<AdminLogin />} />
+                <Route path='admin-dashboard/admin-login' element={<AdminLogin />} />
                 <Route path='unauthorized' element={<Unauthorized />} />
                 <Route path='signup' element={<Signup />} />
                 <Route path='forgot-password' element={<ForgotPassword />} />
                 <Route path="/reset-password/:uidb64/:token" element={<ResetPassword />} />
 
 
-                <Route path="eehook-dashboard" element={
+                <Route path="admin-dashboard" element={
                     <AdminRoute>
                         <OrderDashboard />
                     </AdminRoute>
                 } />
-                <Route path="eehook-dashboard/product-variants" element={<AdminRoute><Navigate to="/eehook-dashboard/products" replace /></AdminRoute>} />
-                <Route path="eehook-dashboard/product-variant-units" element={<AdminRoute><Navigate to="/eehook-dashboard/products" replace /></AdminRoute>} />
-                <Route path="eehook-dashboard/product-images" element={<AdminRoute><Navigate to="/eehook-dashboard/products" replace /></AdminRoute>} />
-                <Route path="eehook-dashboard/products/new" element={<AdminRoute><OrderDashboard /></AdminRoute>} />
-                <Route path="eehook-dashboard/products/:id" element={<AdminRoute><OrderDashboard /></AdminRoute>} />
-                <Route path="eehook-dashboard/products/:id/edit" element={<AdminRoute><OrderDashboard /></AdminRoute>} />
-                <Route path="eehook-dashboard/offers/new" element={<AdminRoute><OrderDashboard /></AdminRoute>} />
-                <Route path="eehook-dashboard/offers/:id/edit" element={<AdminRoute><OrderDashboard /></AdminRoute>} />
-                <Route path="eehook-dashboard/hero-banners/new" element={<AdminRoute><OrderDashboard /></AdminRoute>} />
-                <Route path="eehook-dashboard/hero-banners/:id/edit" element={<AdminRoute><OrderDashboard /></AdminRoute>} />
-                <Route path="eehook-dashboard/promo-banners/new" element={<AdminRoute><OrderDashboard /></AdminRoute>} />
-                <Route path="eehook-dashboard/promo-banners/:id/edit" element={<AdminRoute><OrderDashboard /></AdminRoute>} />
-                <Route path="eehook-dashboard/hero-side-banners/new" element={<AdminRoute><OrderDashboard /></AdminRoute>} />
-                <Route path="eehook-dashboard/hero-side-banners/:id/edit" element={<AdminRoute><OrderDashboard /></AdminRoute>} />
-                <Route path="eehook-dashboard/coupons/new" element={<AdminRoute><OrderDashboard /></AdminRoute>} />
-                <Route path="eehook-dashboard/coupons/:id/edit" element={<AdminRoute><OrderDashboard /></AdminRoute>} />
-                <Route path="eehook-dashboard/trust-benefits/new" element={<AdminRoute><OrderDashboard /></AdminRoute>} />
-                <Route path="eehook-dashboard/product-highlights/new" element={<AdminRoute><OrderDashboard /></AdminRoute>} />
-                <Route path="eehook-dashboard/product-highlights/:id/edit" element={<AdminRoute><OrderDashboard /></AdminRoute>} />
-                <Route path="eehook-dashboard/product-messages/new" element={<AdminRoute><OrderDashboard /></AdminRoute>} />
-                <Route path="eehook-dashboard/product-messages/:id/edit" element={<AdminRoute><OrderDashboard /></AdminRoute>} />
-                <Route path="eehook-dashboard/welcome-bonuses/new" element={<AdminRoute><OrderDashboard /></AdminRoute>} />
-                <Route path="eehook-dashboard/welcome-bonuses/:id/edit" element={<AdminRoute><OrderDashboard /></AdminRoute>} />
-                <Route path="eehook-dashboard/coupon-usages/new" element={<AdminRoute><OrderDashboard /></AdminRoute>} />
-                <Route path="eehook-dashboard/coupon-usages/:id/edit" element={<AdminRoute><OrderDashboard /></AdminRoute>} />
-                <Route path="eehook-dashboard/token-blacklist" element={<AdminRoute><Navigate to="/eehook-dashboard/token-blacklist/outstanding-tokens" replace /></AdminRoute>} />
-                <Route path="eehook-dashboard/token-blacklist/outstanding-tokens" element={<AdminRoute><OrderDashboard /></AdminRoute>} />
-                <Route path="eehook-dashboard/token-blacklist/blacklisted-tokens" element={<AdminRoute><OrderDashboard /></AdminRoute>} />
-                <Route path="eehook-dashboard/:section" element={
+                <Route path="admin-dashboard/product-variants" element={<AdminRoute><Navigate to="/admin-dashboard/products" replace /></AdminRoute>} />
+                <Route path="admin-dashboard/product-variant-units" element={<AdminRoute><Navigate to="/admin-dashboard/products" replace /></AdminRoute>} />
+                <Route path="admin-dashboard/product-images" element={<AdminRoute><Navigate to="/admin-dashboard/products" replace /></AdminRoute>} />
+                <Route path="admin-dashboard/products/new" element={<AdminRoute><OrderDashboard /></AdminRoute>} />
+                <Route path="admin-dashboard/products/:id" element={<AdminRoute><OrderDashboard /></AdminRoute>} />
+                <Route path="admin-dashboard/products/:id/edit" element={<AdminRoute><OrderDashboard /></AdminRoute>} />
+                <Route path="admin-dashboard/offers/new" element={<AdminRoute><OrderDashboard /></AdminRoute>} />
+                <Route path="admin-dashboard/offers/:id/edit" element={<AdminRoute><OrderDashboard /></AdminRoute>} />
+                <Route path="admin-dashboard/hero-banners/new" element={<AdminRoute><OrderDashboard /></AdminRoute>} />
+                <Route path="admin-dashboard/hero-banners/:id/edit" element={<AdminRoute><OrderDashboard /></AdminRoute>} />
+                <Route path="admin-dashboard/promo-banners/new" element={<AdminRoute><OrderDashboard /></AdminRoute>} />
+                <Route path="admin-dashboard/promo-banners/:id/edit" element={<AdminRoute><OrderDashboard /></AdminRoute>} />
+                <Route path="admin-dashboard/hero-side-banners/new" element={<AdminRoute><OrderDashboard /></AdminRoute>} />
+                <Route path="admin-dashboard/hero-side-banners/:id/edit" element={<AdminRoute><OrderDashboard /></AdminRoute>} />
+                <Route path="admin-dashboard/coupons/new" element={<AdminRoute><OrderDashboard /></AdminRoute>} />
+                <Route path="admin-dashboard/coupons/:id/edit" element={<AdminRoute><OrderDashboard /></AdminRoute>} />
+                <Route path="admin-dashboard/trust-benefits/new" element={<AdminRoute><OrderDashboard /></AdminRoute>} />
+                <Route path="admin-dashboard/product-highlights/new" element={<AdminRoute><OrderDashboard /></AdminRoute>} />
+                <Route path="admin-dashboard/product-highlights/:id/edit" element={<AdminRoute><OrderDashboard /></AdminRoute>} />
+                <Route path="admin-dashboard/product-messages/new" element={<AdminRoute><OrderDashboard /></AdminRoute>} />
+                <Route path="admin-dashboard/product-messages/:id/edit" element={<AdminRoute><OrderDashboard /></AdminRoute>} />
+                <Route path="admin-dashboard/welcome-bonuses/new" element={<AdminRoute><OrderDashboard /></AdminRoute>} />
+                <Route path="admin-dashboard/welcome-bonuses/:id/edit" element={<AdminRoute><OrderDashboard /></AdminRoute>} />
+                <Route path="admin-dashboard/coupon-usages/new" element={<AdminRoute><OrderDashboard /></AdminRoute>} />
+                <Route path="admin-dashboard/coupon-usages/:id/edit" element={<AdminRoute><OrderDashboard /></AdminRoute>} />
+                <Route path="admin-dashboard/token-blacklist" element={<AdminRoute><Navigate to="/admin-dashboard/token-blacklist/outstanding-tokens" replace /></AdminRoute>} />
+                <Route path="admin-dashboard/token-blacklist/outstanding-tokens" element={<AdminRoute><OrderDashboard /></AdminRoute>} />
+                <Route path="admin-dashboard/token-blacklist/blacklisted-tokens" element={<AdminRoute><OrderDashboard /></AdminRoute>} />
+                <Route path="admin-dashboard/:section" element={
                     <AdminRoute>
                         <OrderDashboard />
                     </AdminRoute>
                 } />
-                <Route path="eehook-dashboard/orders/:id" element={<AdminRoute><OrderDashboard /></AdminRoute>} />
-                <Route path="eehook-dashboard/:section/:id/view" element={<AdminRoute><OrderDashboard /></AdminRoute>} />
-                <Route path="eehook-dashboard/:section/:id/edit" element={<AdminRoute><OrderDashboard /></AdminRoute>} />
+                <Route path="admin-dashboard/orders/:id" element={<AdminRoute><OrderDashboard /></AdminRoute>} />
+                <Route path="admin-dashboard/:section/:id/view" element={<AdminRoute><OrderDashboard /></AdminRoute>} />
+                <Route path="admin-dashboard/:section/:id/edit" element={<AdminRoute><OrderDashboard /></AdminRoute>} />
                 <Route
-                    path="/eehook-dashboard/details/:id"
+                    path="/admin-dashboard/details/:id"
                     element={
                         <AdminRoute>
                             <LegacyOrderDetailsRedirect />
@@ -139,7 +139,7 @@ function Router() {
                     }
                 />
                 <Route
-                    path="/eehook-dashboard/invoice/:id"
+                    path="/admin-dashboard/invoice/:id"
                     element={
                         <AdminRoute>
                             <Invoice />

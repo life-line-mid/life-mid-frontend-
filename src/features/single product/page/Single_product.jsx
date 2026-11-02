@@ -631,8 +631,8 @@ function Single_product() {
         const selectedImage = activeImage
             || selectedVariant.images?.find((image) => image.is_primary)?.image
             || selectedVariant.images?.[0]?.image;
-        const imageUrl = selectedImage ? getImageUrl(selectedImage) : "/eehook.jpeg";
-        const description = (descriptionText || `Shop ${productHeading} at EEHOOK.`)
+        const imageUrl = selectedImage ? getImageUrl(selectedImage) : "/life-line.jpeg";
+        const description = (descriptionText || `Shop ${productHeading} at LIFE-LINE.`)
             .replace(/\s+/g, " ")
             .slice(0, 200);
         const url = new URL(
@@ -646,7 +646,7 @@ function Single_product() {
         ).href;
 
         return updateProductMetadata({
-            title: `${productHeading} | EEHOOK`,
+            title: `${productHeading} | LIFE-LINE`,
             description,
             url,
             image: imageUrl,
@@ -864,8 +864,8 @@ function Single_product() {
             storage: selectedStorageLabel,
         });
         const shareUrl = new URL(sharePath, window.location.origin).href;
-        const shareTitle = `${productHeading} | EEHOOK`;
-        const shareText = `Check out ${productHeading} on EEHOOK.`;
+        const shareTitle = `${productHeading} | LIFE-LINE`;
+        const shareText = `Check out ${productHeading} on LIFE-LINE.`;
 
         try {
             if (typeof navigator !== "undefined" && typeof navigator.share === "function") {
@@ -1123,7 +1123,7 @@ function Single_product() {
                 </div>
 
                 {/* RIGHT: PURCHASE PANEL */}
-                <div className="purchase-panel eehook-purchase-panel">
+                <div className="purchase-panel life-line-purchase-panel">
 
                     <div className="delivery-time-section">
                         {Number(data?.shipping_fee || 0) > 0 && (
