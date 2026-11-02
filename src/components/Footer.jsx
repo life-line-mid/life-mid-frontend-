@@ -19,7 +19,7 @@ function Footer() {
                 <div className="footer-container">
 
                     <div className="footer-column brand">
-                        <img src={footerlogo} alt="Logo" className="footer-logo" />
+                        <img src={footerlogo} alt="Life-line Medical Supplies" className="footer-logo" />
                     </div>
 
                     <div className="footer-column">

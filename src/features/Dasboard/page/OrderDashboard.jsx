@@ -394,7 +394,7 @@ export default function OrderDashboard() {
 
     return <div className="admin-app">
         <aside className={`admin-sidebar ${sidebarOpen ? "open" : ""}`}>
-            <div className="admin-brand"><span className="admin-brand-logo" aria-label="life-line"><img src={navbarLogo} alt="" /></span><button type="button" className="admin-close" onClick={() => setSidebarOpen(false)} aria-label="Close navigation"><FiX aria-hidden="true" /></button></div>
+            <div className="admin-brand"><span className="admin-brand-logo" aria-label="Life-line Medical Supplies"><img src={navbarLogo} alt="" /></span><button type="button" className="admin-close" onClick={() => setSidebarOpen(false)} aria-label="Close navigation"><FiX aria-hidden="true" /></button></div>
             <nav className="admin-nav">{navGroups.map((group) => <div key={group.title}><p className="admin-nav-label">{group.title}</p>{group.items.map(({ key, label, icon: Icon }) => <button key={key} className={`admin-nav-item ${pathKey === key ? "active" : ""}`} onClick={() => go(key)}><Icon /><span>{label}</span></button>)}</div>)}</nav>
             <div className="admin-sidebar-footer"><div className="admin-user"><span>{(getAuthValue("first_name") || "S").slice(0, 1).toUpperCase()}</span><div><strong>{getAuthValue("first_name") || "Super Admin"}</strong><small>Super Admin</small></div></div><button className="admin-nav-item admin-logout-button" onClick={logout}><FiLogOut /><span>Sign out</span></button></div>
         </aside>
