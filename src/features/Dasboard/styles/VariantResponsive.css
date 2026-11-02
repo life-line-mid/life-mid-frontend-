@@ -1,0 +1,274 @@
+/* Keep every multiple-price field visible at desktop, laptop, and mobile widths. */
+.editor-unit-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 9px;
+    width: 100%;
+    box-sizing: border-box;
+    min-width: 0;
+}
+
+.editor-unit-main-row {
+    display: grid;
+    grid-template-columns:
+        minmax(110px, 1fr)
+        minmax(110px, 1fr)
+        minmax(140px, 1.2fr)
+        minmax(100px, .8fr)
+        minmax(100px, .8fr)
+        38px;
+    gap: 8px;
+    align-items: start;
+    grid-auto-rows: minmax(min-content, auto);
+    width: 100%;
+    box-sizing: border-box;
+    min-width: 0;
+}
+
+.editor-unit-sku-hint-row {
+    display: grid;
+    grid-template-columns:
+        minmax(110px, 1fr)
+        minmax(110px, 1fr)
+        minmax(140px, 1.2fr)
+        minmax(100px, .8fr)
+        minmax(100px, .8fr)
+        38px;
+    gap: 8px;
+    width: 100%;
+    box-sizing: border-box;
+    min-width: 0;
+}
+
+.editor-unit-sku-hint-row .field-hint {
+    grid-column: 3;
+    display: block;
+    min-width: 0;
+    margin: -3px 0 0;
+    color: var(--admin-muted);
+    font-size: 11px;
+    font-weight: 500;
+    line-height: 1.35;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+}
+
+.variant-unit-grade,
+.unit-editor-grade-row {
+    display: grid;
+    grid-template-columns: max-content minmax(160px, 1fr);
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    min-width: 0;
+    padding-top: 8px;
+    border-top: 1px dashed var(--admin-line);
+    color: var(--admin-ink);
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.variant-unit-grade input,
+.unit-editor-grade-row input {
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+    border: 1px solid var(--admin-line);
+    border-radius: 7px;
+    padding: 9px;
+    background: #fff;
+    color: var(--admin-ink);
+    font: 12px Inter, sans-serif;
+}
+
+.variant-unit-grade small,
+.unit-editor-grade-row small {
+    color: var(--admin-muted);
+    font-weight: 500;
+}
+
+.editor-unit-row > *,
+.unit-editor-row > * {
+    min-width: 0;
+}
+
+.variant-unit-field {
+    display: flex;
+    min-width: 0;
+    flex-direction: column;
+    gap: 6px;
+    color: var(--admin-ink);
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.variant-unit-sku-field {
+    align-self: start;
+    min-height: 0;
+}
+
+.variant-unit-field input {
+    width: 100%;
+    min-width: 0;
+}
+
+.editor-unit-row > .product-error {
+    grid-column: 1 / -1;
+}
+
+.unit-editor-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 9px;
+    width: 100%;
+    box-sizing: border-box;
+    min-width: 0;
+}
+
+.unit-editor-main-row {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr)) 38px;
+    gap: 8px;
+    align-items: center;
+    width: 100%;
+    box-sizing: border-box;
+    min-width: 0;
+}
+
+@media (max-width: 1200px) {
+    .editor-unit-main-row {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .editor-unit-sku-hint-row {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .editor-unit-sku-hint-row .field-hint {
+        grid-column: 1 / -1;
+    }
+
+    .unit-editor-main-row {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .editor-unit-main-row .table-icon,
+    .unit-editor-main-row .table-icon {
+        grid-column: 3;
+        justify-self: end;
+    }
+}
+
+@media (max-width: 760px) {
+    .editor-unit-row > .product-error {
+        grid-column: 1 / -1;
+    }
+
+    .editor-unit-main-row,
+    .unit-editor-main-row {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .editor-unit-sku-hint-row {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 420px) {
+    .editor-unit-main-row,
+    .unit-editor-main-row {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .editor-unit-sku-hint-row {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .editor-unit-sku-hint-row .field-hint {
+        grid-column: 1;
+    }
+
+    .variant-unit-grade,
+    .unit-editor-grade-row {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 5px;
+    }
+
+    .editor-unit-row > .product-error {
+        grid-column: 1;
+    }
+
+    .editor-unit-main-row > .table-icon,
+    .unit-editor-main-row .table-icon {
+        grid-column: 1;
+        justify-self: start;
+    }
+}
+
+/* ProductEditor is also rendered through OrderDashboard, whose legacy grid
+   rules are loaded after this file. Scope the editor rules so that the unit
+   row cannot fall back to the old five-column layout. */
+.product-editor-page .editor-unit-row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 9px;
+    align-items: start;
+}
+
+.product-editor-page .editor-unit-main-row {
+    display: grid;
+    grid-template-columns:
+        minmax(110px, 1fr)
+        minmax(110px, 1fr)
+        minmax(140px, 1.2fr)
+        minmax(100px, .8fr)
+        minmax(100px, .8fr)
+        38px;
+    align-items: start;
+    grid-auto-rows: minmax(min-content, auto);
+}
+
+.product-editor-page .editor-unit-sku-hint-row,
+.product-editor-page .variant-unit-grade,
+.product-editor-page .editor-unit-row > .product-error {
+    grid-column: 1;
+}
+
+@media (max-width: 1200px) {
+    .product-editor-page .editor-unit-main-row {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .product-editor-page .editor-unit-sku-hint-row {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .product-editor-page .editor-unit-sku-hint-row .field-hint {
+        grid-column: 1 / -1;
+    }
+}
+
+@media (max-width: 760px) {
+    .product-editor-page .editor-unit-main-row {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .product-editor-page .editor-unit-sku-hint-row {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 420px) {
+    .product-editor-page .editor-unit-main-row {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .product-editor-page .editor-unit-sku-hint-row {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .product-editor-page .editor-unit-sku-hint-row .field-hint {
+        grid-column: 1;
+    }
+}

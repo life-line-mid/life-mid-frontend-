@@ -1,0 +1,292 @@
+.offer-editor-form {
+    display: grid;
+    gap: 24px;
+}
+
+.offer-target-section {
+    display: grid;
+    gap: 16px;
+    padding: 20px;
+    border: 1px solid var(--admin-border, #e5e7eb);
+    border-radius: 16px;
+    background: #fbfdfc;
+}
+
+.offer-target-heading h3 {
+    margin: 0 0 5px;
+}
+
+.offer-target-heading p {
+    margin: 0;
+    color: var(--admin-muted, #6b7280);
+}
+
+.offer-variant-choice {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    border: 0;
+    padding: 0;
+}
+
+.offer-variant-choice legend {
+    width: 100%;
+    font-weight: 700;
+}
+
+.offer-variant-choice label,
+.offer-active-toggle input,
+.offer-variant-option {
+    cursor: pointer;
+}
+
+.offer-variant-list {
+    display: grid;
+    gap: 10px;
+    max-height: 260px;
+    overflow: auto;
+}
+
+.offer-variant-option {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 10px;
+    padding: 11px 13px;
+    border: 1px solid var(--admin-border, #e5e7eb);
+    border-radius: 10px;
+    background: #fff;
+}
+
+.offer-variant-option small {
+    color: var(--admin-muted, #6b7280);
+}
+
+.offer-active-toggle {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.offer-active-toggle span {
+    min-width: 50px;
+}
+
+/* Keep the offer editor contained on ultrawide screens and usable on phones. */
+.offer-editor-page {
+    width: min(100%, 1320px);
+    margin-inline: auto;
+    min-width: 0;
+}
+
+.offer-editor-page .admin-page-header,
+.offer-editor-page .admin-page-header > div,
+.offer-editor-page .admin-form,
+.offer-editor-page .admin-form-grid,
+.offer-editor-page .admin-form-field,
+.offer-target-section,
+.offer-variant-choice,
+.offer-variant-option {
+    min-width: 0;
+}
+
+.offer-editor-page .admin-page-header p:last-child {
+    max-width: 760px;
+    line-height: 1.55;
+}
+
+.offer-editor-form {
+    gap: clamp(16px, 2vw, 24px);
+    padding: clamp(16px, 2.2vw, 32px);
+}
+
+.offer-editor-form .admin-form-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: start;
+}
+
+.offer-editor-form .admin-form-field-wide {
+    grid-column: 1 / -1;
+}
+
+.offer-editor-form input,
+.offer-editor-form select,
+.offer-editor-form textarea {
+    min-width: 0;
+    max-width: 100%;
+}
+
+.offer-editor-form input[type="file"] {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.offer-target-section {
+    padding: clamp(14px, 1.7vw, 24px);
+}
+
+.offer-target-heading p {
+    line-height: 1.5;
+}
+
+.offer-product-picker {
+    position: relative;
+    z-index: 3;
+}
+
+.offer-product-search-wrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.offer-product-search-wrap > svg {
+    position: absolute;
+    left: 9px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--admin-muted, #6b7280);
+    pointer-events: none;
+}
+
+.offer-product-picker .offer-product-search-wrap input {
+    width: 100%;
+    padding-left: 50px;
+}
+
+.offer-product-suggestions {
+    position: absolute;
+    inset: calc(100% - 2px) 0 auto;
+    display: grid;
+    max-height: 280px;
+    overflow-y: auto;
+    padding: 6px;
+    border: 1px solid var(--admin-border, #e5e7eb);
+    border-radius: 0 0 12px 12px;
+    background: #fff;
+    box-shadow: 0 12px 28px rgb(15 23 42 / 12%);
+}
+
+.offer-product-suggestion {
+    display: grid;
+    gap: 3px;
+    width: 100%;
+    padding: 10px 12px;
+    border: 0;
+    border-radius: 8px;
+    background: transparent;
+    color: inherit;
+    text-align: left;
+    cursor: pointer;
+}
+
+.offer-product-suggestion:hover,
+.offer-product-suggestion:focus-visible {
+    background: #fff4df;
+    outline: none;
+}
+
+.offer-product-suggestion small,
+.offer-product-empty,
+.offer-field-help,
+.offer-single-variant-note {
+    color: var(--admin-muted, #6b7280);
+}
+
+.offer-product-empty,
+.offer-single-variant-note {
+    margin: 0;
+    line-height: 1.5;
+}
+
+.offer-field-help {
+    display: block;
+    margin-top: 5px;
+    font-size: 12px;
+}
+
+.offer-variant-choice {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.offer-variant-choice legend {
+    grid-column: 1 / -1;
+    width: auto;
+}
+
+.offer-variant-option small {
+    min-width: 0;
+    overflow-wrap: anywhere;
+}
+
+.offer-editor-form > .admin-modal-actions {
+    padding-top: 4px;
+}
+
+@media (max-width: 760px) {
+    .offer-editor-form {
+        padding: 16px;
+    }
+
+    .offer-editor-form .admin-form-grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .offer-editor-form .admin-form-field-wide {
+        grid-column: auto;
+    }
+
+    .offer-variant-choice {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 12px;
+    }
+
+    .offer-variant-choice legend {
+        grid-column: auto;
+    }
+
+    .offer-variant-option {
+        grid-template-columns: auto minmax(0, 1fr);
+    }
+
+    .offer-variant-option small {
+        grid-column: 2;
+        margin-top: -4px;
+    }
+
+    .offer-editor-form > .admin-modal-actions {
+        align-items: stretch;
+        flex-direction: column-reverse;
+    }
+
+    .offer-editor-form > .admin-modal-actions .admin-button {
+        width: 100%;
+    }
+}
+
+@media (max-width: 400px) {
+    .offer-editor-form {
+        gap: 16px;
+        padding: 12px;
+    }
+
+    .offer-target-section {
+        gap: 13px;
+        padding: 13px;
+        border-radius: 12px;
+    }
+
+    .offer-target-heading h3 {
+        font-size: 17px;
+    }
+
+    .offer-target-heading p {
+        font-size: 12px;
+    }
+
+    .offer-variant-choice {
+        gap: 10px;
+    }
+}

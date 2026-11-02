@@ -1,0 +1,1026 @@
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import {
+  FaUserCircle,
+  FaMapMarkerAlt,
+  FaPlus,
+  FaEdit,
+  FaTrash,
+  FaBoxOpen,
+  FaHeart,
+  FaSignOutAlt
+} from "react-icons/fa";
+import client, { logoutSession } from "../../../lib/ApiClient";
+import "../styles/account.css";
+import showToast from "../../../utils/toast";
+
+const UAE_EMIRATES = [
+  "Abu Dhabi",
+  "Ajman",
+  "Dubai",
+  "Fujairah",
+  "Ras Al Khaimah",
+  "Sharjah",
+  "Umm Al Quwain",
+];
+
+const isUaeCountry = (country) => ["uae", "united arab emirates"].includes(
+  String(country || "").trim().toLowerCase(),
+);
+
+const Profile = () => {
+
+  const navigate = useNavigate();
+
+  const [loading, setLoading] = useState(false);
+  const [isEditingProfile, setIsEditingProfile] = useState(false);
+
+  const [profile, setProfile] = useState({
+    first_name: "",
+    email: "",
+    phone: "",
+    gender: "",
+    date_of_birth: ""
+  });
+
+  const [addresses, setAddresses] = useState([]);
+
+  const [addressData, setAddressData] = useState({
+    full_name: "",
+    phone: "",
+    address_line: "",
+    city: "",
+    postal_code: "",
+    country: "United Arab Emirates",
+    emirate: "",
+    is_default: false
+  });
+
+  const [editingId, setEditingId] = useState(null);
+
+  const [showModal, setShowModal] = useState(false);
+
+  const getProfile = async () => {
+
+    try {
+
+      setLoading(true);
+
+      const res = await client.get("profile/");
+
+      setProfile({
+        first_name: res.data.first_name || "",
+        email: res.data.email || "",
+        phone: res.data.phone || "",
+        gender: res.data.gender || "",
+        date_of_birth: res.data.date_of_birth || ""
+      });
+
+    } catch (err) {
+
+      console.log(err);
+
+    } finally {
+
+      setLoading(false);
+
+    }
+
+  };
+
+  const handleProfileChange = (e) => {
+
+    setProfile({
+      ...profile,
+      [e.target.name]: e.target.value
+    });
+
+  };
+
+  const handleAddressChange = (e) => {
+
+    const { name, value, type, checked } = e.target;
+    const nextValue = type === "checkbox" ? checked : value;
+
+    setAddressData({
+      ...addressData,
+      [name]: nextValue,
+      ...(name === "country" && !isUaeCountry(value) ? { emirate: "" } : {}),
+    });
+
+  };
+
+  const resetAddressForm = () => {
+
+    setAddressData({
+      full_name: "",
+      phone: "",
+      address_line: "",
+      city: "",
+      postal_code: "",
+      country: "United Arab Emirates",
+      emirate: "",
+      is_default: false
+    });
+
+    setEditingId(null);
+
+  };
+  const getAddresses = async () => {
+
+    try {
+
+      const res = await client.get("addresses/");
+
+      setAddresses(res.data || []);
+
+    } catch (err) {
+
+      console.log(err);
+
+    }
+
+  };
+
+  useEffect(() => {
+    getProfile();
+    getAddresses();
+  }, []);
+
+  const updateProfile = async (e) => {
+
+    e.preventDefault();
+
+    try {
+
+      setLoading(true);
+
+      const res = await client.put(
+        "profile/",
+        profile
+      );
+
+      setProfile({
+        first_name: res.data.data?.first_name || profile.first_name,
+        email: res.data.data?.email || profile.email,
+        phone: res.data.data?.phone || profile.phone,
+        gender: res.data.data?.gender || profile.gender,
+        date_of_birth: res.data.data?.date_of_birth || profile.date_of_birth
+      });
+
+      setIsEditingProfile(false);
+      showToast.success("Profile updated successfully")
+    } catch (err) {
+
+      console.log(err);
+
+      
+      showToast.error("Unable to update profile ")
+
+    } finally {
+
+      setLoading(false);
+
+    }
+
+  };
+
+  const addAddress = async () => {
+
+    try {
+
+      await client.post(
+        "addresses/",
+        addressData
+      );
+
+      await getAddresses();
+
+      resetAddressForm();
+
+      setShowModal(false);
+      showToast.success('Address added ')
+
+    } catch (err) {
+
+      console.log(err);
+
+
+      showToast.error("Unable to add address")
+
+    }
+
+  };
+
+  const editAddress = (address) => {
+
+    setEditingId(address.id);
+
+    setAddressData({
+      full_name: address.full_name || "",
+      phone: address.phone || "",
+      address_line: address.address_line || "",
+      city: address.city || "",
+      postal_code: address.postal_code || "",
+      country: address.country || "United Arab Emirates",
+      emirate: address.emirate || "",
+      is_default: address.is_default
+    });
+
+    setShowModal(true);
+
+  };
+  const updateAddress = async () => {
+
+    try {
+
+      await client.put(
+        `addresses/${editingId}/`,
+        addressData
+      );
+
+      await getAddresses();
+
+      resetAddressForm();
+
+      setShowModal(false);
+
+      showToast.success("Address updated successfully");
+
+
+    } catch (err) {
+
+      console.log(err);
+
+      showToast.error("Unable to update address");
+
+    }
+
+  };
+
+  const handleAddressSubmit = (event) => {
+    event.preventDefault();
+
+    if (editingId) {
+      updateAddress();
+      return;
+    }
+
+    addAddress();
+  };
+
+  const deleteAddress = async (id) => {
+
+    const confirmDelete = window.confirm(
+      "Are you sure you want to delete this address?"
+    );
+
+    if (!confirmDelete) return;
+
+    try {
+
+      await client.delete(
+        `addresses/${id}/`
+      );
+
+      await getAddresses();
+
+      showToast.success("Address deleted successfully");
+
+    } catch (err) {
+
+      console.log(err);
+
+      showToast.error("Unable to delete address");
+
+    }
+
+  };
+
+  const getDefaultAddress = () => {
+
+    return addresses.find(
+      item => item.is_default
+    );
+
+  };
+
+  const logout = async () => {
+    await logoutSession("customer");
+    navigate("/login", { replace: true });
+  };
+  return (
+
+    <div className="profile-page">
+
+      <div className="profile-wrapper">
+
+        <div className="profile-banner">
+
+          <div className="banner-left">
+
+            <div className="profile-avatar">
+
+              {profile.first_name
+                ? profile.first_name.charAt(0).toUpperCase()
+                : "A"}
+
+            </div>
+
+            <div>
+
+              <h1>
+
+                My Account
+
+              </h1>
+
+              <p>
+
+                Welcome back,
+
+                <strong>
+
+                  {" "}
+                  {profile.first_name || "Customer"}
+
+                </strong>
+
+
+
+              </p>
+
+            </div>
+
+          </div>
+
+        </div>
+
+        <div className="profile-top-grid">
+
+          <div className="profile-card">
+
+            <div className="profile-card-heading">
+
+              <div className="card-title">
+
+                <FaUserCircle />
+
+                <h3>
+
+                  Personal Information
+
+                </h3>
+
+              </div>
+
+              {!isEditingProfile && (
+                <button
+                  type="button"
+                  className="edit-profile-btn"
+                  onClick={() => setIsEditingProfile(true)}
+                  disabled={loading}
+                >
+                  <FaEdit aria-hidden="true" />
+                  Edit
+                </button>
+              )}
+
+            </div>
+
+            <form
+              className={`profile-form ${isEditingProfile ? "is-editing" : "is-readonly"}`}
+              onSubmit={updateProfile}
+            >
+
+              <div className="input-group">
+
+                <label>
+
+                  First Name
+
+                </label>
+
+                {isEditingProfile ? (
+                  <input
+                    type="text"
+                    name="first_name"
+                    value={profile.first_name}
+                    onChange={handleProfileChange}
+                    required
+                  />
+                ) : (
+                  <div className="profile-field-value">{profile.first_name || "—"}</div>
+                )}
+
+              </div>
+
+              <div className="input-group">
+
+                <label>
+
+                  Email Address
+
+                </label>
+
+                {isEditingProfile ? (
+                  <input
+                    type="email"
+                    name="email"
+                    value={profile.email}
+                    readOnly
+                  />
+                ) : (
+                  <div className="profile-field-value">{profile.email || "—"}</div>
+                )}
+
+              </div>
+
+              <div className="input-group">
+
+                <label>
+
+                  Phone Number
+
+                </label>
+
+                {isEditingProfile ? (
+                  <input
+                    type="text"
+                    name="phone"
+                    value={profile.phone}
+                    onChange={handleProfileChange}
+                    required
+                  />
+                ) : (
+                  <div className="profile-field-value">{profile.phone || "—"}</div>
+                )}
+
+              </div>
+
+              <div className="input-group">
+
+                <label>
+
+                  Gender
+
+                </label>
+
+                {isEditingProfile ? (
+                  <select
+                    name="gender"
+                    value={profile.gender}
+                    onChange={handleProfileChange}
+                    required
+                  >
+                    <option value="">Select Gender</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Other">Other</option>
+                  </select>
+                ) : (
+                  <div className="profile-field-value">{profile.gender || "—"}</div>
+                )}
+
+              </div>
+
+              <div className="input-group full-width">
+
+                <label>
+
+                  Date of Birth
+
+                </label>
+
+                {isEditingProfile ? (
+                  <input
+                    type="date"
+                    name="date_of_birth"
+                    value={profile.date_of_birth}
+                    onChange={handleProfileChange}
+                    required
+                  />
+                ) : (
+                  <div className="profile-field-value">{profile.date_of_birth || "—"}</div>
+                )}
+
+              </div>
+
+              {isEditingProfile && (
+                <button
+                  type="submit"
+                  className="save-profile-btn"
+                  disabled={loading}
+                >
+                  {loading ? "Saving..." : "Save Changes"}
+                </button>
+              )}
+
+            </form>
+
+          </div>
+
+          <aside className="account-side-column">
+
+          <div className="default-address-card">
+
+    <div className="card-header">
+
+        <div className="card-title">
+
+            <FaMapMarkerAlt className="title-icon" />
+
+            <div>
+
+                <h3>Default Address</h3>
+
+                <p>Your primary delivery address</p>
+
+            </div>
+
+        </div>
+
+        {getDefaultAddress() && (
+            <span className="default-badge">
+                Default
+            </span>
+        )}
+
+    </div>
+
+    {getDefaultAddress() ? (
+
+        <div className="default-address">
+
+            <div className="address-user">
+
+                <div className="address-field">
+                    <span className="address-field-label">Name</span>
+                    <h4>{getDefaultAddress().full_name || "—"}</h4>
+                </div>
+
+                <div className="address-field">
+                    <span className="address-field-label">Phone</span>
+                    <span className="address-field-value">{getDefaultAddress().phone || "—"}</span>
+                </div>
+
+            </div>
+
+            <div className="address-details">
+
+                <p>
+                    <span className="address-field-label">Address</span>
+                    <span className="address-field-value">{getDefaultAddress().address_line || "—"}</span>
+                </p>
+
+                <p>
+                    <span className="address-field-label">City / Postal Code</span>
+                    <span className="address-field-value">
+                        {[getDefaultAddress().city, getDefaultAddress().emirate, getDefaultAddress().postal_code].filter(Boolean).join(", ") || "—"}
+                    </span>
+                </p>
+
+                <p>
+                    <span className="address-field-label">Country</span>
+                    <span className="address-field-value">{getDefaultAddress().country || "—"}</span>
+                </p>
+
+            </div>
+
+            <button
+                type="button"
+                className="change-address-btn"
+                onClick={() => editAddress(getDefaultAddress())}
+            >
+                <FaMapMarkerAlt />
+                Change Address
+            </button>
+
+        </div>
+
+    ) : (
+
+        <div className="no-address">
+
+            <FaMapMarkerAlt className="empty-icon" />
+
+            <h4>No Default Address</h4>
+
+            <p>
+                You haven't added a default delivery
+                address yet.
+            </p>
+
+            <button
+                type="button"
+                className="add-address-small"
+                onClick={() => {
+                    resetAddressForm();
+                    setShowModal(true);
+                }}
+            >
+                <FaPlus />
+                Add New Address
+            </button>
+
+        </div>
+
+    )}
+
+</div>
+
+          <div className="quick-links">
+            <button
+              type="button"
+              className="quick-card"
+              onClick={() => navigate("/myorders")}
+            >
+              <div className="quick-icon">
+                <FaBoxOpen />
+              </div>
+              <div>
+                <h3>My Orders</h3>
+                <p>Track your recent orders</p>
+              </div>
+            </button>
+
+            <button
+              type="button"
+              className="quick-card"
+              onClick={() => navigate("/wishlist")}
+            >
+              <div className="quick-icon">
+                <FaHeart />
+              </div>
+              <div>
+                <h3>Wishlist</h3>
+                <p>View your saved products</p>
+              </div>
+            </button>
+
+          </div>
+
+          </aside>
+
+        </div>
+
+        <div className="address-header">
+
+          <div className="address-title">
+
+            <h2>Saved Addresses</h2>
+
+            <p>Manage your delivery addresses for faster checkout.</p>
+
+          </div>
+
+          <button
+            type="button"
+            className="add-address-btn"
+            onClick={() => {
+              resetAddressForm();
+              setShowModal(true);
+            }}
+          >
+
+            <FaPlus />
+
+            Add New Address
+
+          </button>
+
+        </div>
+
+        <div className="address-grid">
+          {addresses.length === 0 ? (
+            <div className="empty-address">
+
+              <FaMapMarkerAlt className="empty-icon" />
+
+              <h3>
+
+                No Addresses Found
+
+              </h3>
+
+              <p>
+
+                Add your delivery address to make checkout faster.
+
+              </p>
+
+              <button
+                type="button"
+                className="add-first-address"
+                onClick={() => {
+                  resetAddressForm();
+                  setShowModal(true);
+                }}
+              >
+
+                <FaPlus />
+
+                Add Address
+
+              </button>
+
+            </div>
+
+          ) : (
+
+            addresses.map(address => (
+
+              <div
+                className="address-card"
+                key={address.id}
+              >
+
+                <div className="address-card-top">
+
+                  <div>
+
+                    <h3>
+
+                      {address.full_name}
+
+                    </h3>
+
+                    <p>
+
+                      {address.phone}
+
+                    </p>
+
+                  </div>
+
+                  {address.is_default && (
+
+                    <span className="default-badge">
+
+                      Default
+
+                    </span>
+
+                  )}
+
+                </div>
+
+                <div className="address-body">
+
+                  <p>
+
+                    {address.address_line}
+
+                  </p>
+
+                  <p>
+
+                    {address.city}{address.emirate ? `, ${address.emirate}` : ""},{" "}
+                    
+
+                  </p>
+
+                  <p>
+
+                    {address.postal_code}
+
+                  </p>
+
+                  <p>
+
+                    {address.country}
+
+                  </p>
+
+                </div>
+
+                <div className="address-buttons">
+
+                  <button
+                    className="edit-address-btn"
+                    onClick={() =>
+                      editAddress(address)
+                    }
+                  >
+
+                    <FaEdit />
+
+                    Edit
+
+                  </button>
+
+                  <button
+                    className="delete-address-btn"
+                    onClick={() =>
+                      deleteAddress(address.id)
+                    }
+                  >
+
+                    <FaTrash />
+
+                    Delete
+
+                  </button>
+
+                </div>
+
+              </div>
+
+            ))
+
+          )}
+
+        </div>
+
+        <div className="profile-logout-area">
+          <button
+            type="button"
+            className="quick-card logout-card"
+            onClick={logout}
+          >
+            <div className="quick-icon">
+              <FaSignOutAlt />
+            </div>
+            <div>
+              <h3>Logout</h3>
+              <p>Sign out from your account</p>
+            </div>
+          </button>
+        </div>
+
+        {showModal && (
+          <div
+            className="modal-overlay"
+            role="presentation"
+            onClick={() => {
+              setShowModal(false);
+              resetAddressForm();
+            }}
+          >
+            <div
+              className="address-modal"
+              role="dialog"
+              aria-modal="true"
+              aria-labelledby="address-modal-title"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="modal-header">
+                <h2 id="address-modal-title">
+                  {editingId ? "Update Address" : "Add New Address"}
+                </h2>
+
+                <button
+                  type="button"
+                  className="close-modal"
+                  aria-label="Close address form"
+                  onClick={() => {
+                    setShowModal(false);
+                    resetAddressForm();
+                  }}
+                >
+                  ×
+                </button>
+              </div>
+
+              <form className="modal-form" onSubmit={handleAddressSubmit}>
+                <div className="modal-grid">
+                  <div className="modal-field">
+                    <label htmlFor="address-full-name">Full Name</label>
+                    <input
+                      id="address-full-name"
+                      type="text"
+                      name="full_name"
+                      placeholder="Enter full name"
+                      value={addressData.full_name}
+                      onChange={handleAddressChange}
+                      autoComplete="name"
+                      required
+                    />
+                  </div>
+
+                  <div className="modal-field">
+                    <label htmlFor="address-phone">Phone Number</label>
+                    <input
+                      id="address-phone"
+                      type="tel"
+                      name="phone"
+                      placeholder="Enter phone number"
+                      value={addressData.phone}
+                      onChange={handleAddressChange}
+                      autoComplete="tel"
+                      required
+                    />
+                  </div>
+
+                  <div className="modal-field">
+                    <label htmlFor="address-city">City</label>
+                    <input
+                      id="address-city"
+                      type="text"
+                      name="city"
+                      placeholder="Enter city"
+                      value={addressData.city}
+                      onChange={handleAddressChange}
+                      autoComplete="address-level2"
+                      required
+                    />
+                  </div>
+
+                  <div className="modal-field">
+                    <label htmlFor="address-postal-code">Postal Code</label>
+                    <input
+                      id="address-postal-code"
+                      type="text"
+                      name="postal_code"
+                      placeholder="Enter postal code"
+                      value={addressData.postal_code}
+                      onChange={handleAddressChange}
+                      autoComplete="postal-code"
+                      required
+                    />
+                  </div>
+
+                  <div className="modal-field modal-field--wide">
+                    <label htmlFor="address-country">Country</label>
+                    <input
+                      id="address-country"
+                      type="text"
+                      name="country"
+                      placeholder="Enter country"
+                      value={addressData.country}
+                      onChange={handleAddressChange}
+                      autoComplete="country-name"
+                      required
+                    />
+                  </div>
+
+                  {isUaeCountry(addressData.country) && (
+                    <div className="modal-field modal-field--wide">
+                      <label htmlFor="address-emirate">Emirate <small>(optional)</small></label>
+                      <select
+                        id="address-emirate"
+                        name="emirate"
+                        value={addressData.emirate}
+                        onChange={handleAddressChange}
+                      >
+                        <option value="">Select Emirate</option>
+                        {UAE_EMIRATES.map((emirate) => (
+                          <option key={emirate} value={emirate}>{emirate}</option>
+                        ))}
+                      </select>
+                    </div>
+                  )}
+
+                  <div className="modal-field modal-field--wide">
+                    <label htmlFor="address-line">Street Address</label>
+                    <textarea
+                      id="address-line"
+                      name="address_line"
+                      placeholder="House number, street, area"
+                      value={addressData.address_line}
+                      onChange={handleAddressChange}
+                      autoComplete="street-address"
+                      required
+                    />
+                  </div>
+                </div>
+
+                <label className="default-check">
+                  <input
+                    type="checkbox"
+                    name="is_default"
+                    checked={addressData.is_default}
+                    onChange={handleAddressChange}
+                  />
+                  Set as Default Address
+                </label>
+
+                <div className="modal-actions">
+                  <button
+                    type="button"
+                    className="cancel-btn"
+                    onClick={() => {
+                      setShowModal(false);
+                      resetAddressForm();
+                    }}
+                  >
+                    Cancel
+                  </button>
+
+                  <button type="submit" className="save-btn">
+                    {editingId ? "Update Address" : "Save Address"}
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        )}
+      </div>
+
+    </div>
+
+  );
+
+};
+
+export default Profile;
