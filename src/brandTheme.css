@@ -61,6 +61,8 @@ h4,
 .nav_link:hover,
 .nav_link:focus-visible,
 .nav_link.active,
+.nav_link.nav_link.active,
+a.nav_link.active,
 .nav_icon:hover,
 .nav-icon-button:hover,
 .nav_toggle:hover,
@@ -70,11 +72,11 @@ h4,
 .mobile-menu-link:focus-visible,
 .mobile-menu-link.active,
 .mobile-category-toggle:hover {
-    color: var(--brand-green);
+    color: var(--brand-green) !important;
 }
 
 .nav_link::after {
-    background: var(--brand-green);
+    background: var(--brand-green) !important;
 }
 
 .cart span,
@@ -346,6 +348,267 @@ h4,
     background: var(--brand-green-dark);
 }
 
+.forgot-link,
+.signup-link a {
+    color: var(--brand-green) !important;
+}
+
+.forgot-link:hover,
+.signup-link a:hover {
+    color: var(--brand-green-dark) !important;
+}
+
+.google-unavailable {
+    color: var(--brand-slate) !important;
+}
+
+/* Commerce, cart, checkout and order surfaces */
+.checkout-page,
+.life-line-checkout,
+.orders-page,
+.salePage-main,
+.catalog-container {
+    background: #fff;
+    color: var(--brand-navy);
+}
+
+.order-summary,
+.Checkout_card,
+.life-line-checkout-card,
+.orders-list .order-product-entry {
+    background: #fff;
+    border-color: var(--brand-line);
+    box-shadow: 0 8px 24px rgba(21, 54, 91, .06);
+}
+
+.order-summary h2,
+.life-line-checkout-title,
+.life-line-card-header h2,
+.life-line-checkout-card h2,
+.orders-header h1,
+.product-details h4,
+.life-line-summary-details h4,
+.order-product-info h2 {
+    color: var(--brand-navy);
+}
+
+.product-details p,
+.price-row,
+.life-line-checkout-subtitle,
+.life-line-address-info p,
+.life-line-payment-card p,
+.life-line-summary-details p,
+.life-line-summary-price,
+.life-line-summary-row,
+.orders-header p,
+.orders-count,
+.order-reference,
+.order-product-meta,
+.order-product-quantity {
+    color: var(--brand-slate);
+}
+
+.quantity-box button,
+.coupon button,
+.continue-btn,
+.life-line-add-address-btn,
+.life-line-checkout-btn,
+.product_count,
+.apply_btn {
+    background: var(--brand-green);
+    border-color: var(--brand-green);
+    color: #fff;
+}
+
+.quantity-box button:hover,
+.coupon button:hover,
+.continue-btn:hover,
+.life-line-add-address-btn:hover,
+.life-line-checkout-btn:hover,
+.product_count:hover,
+.product_count[aria-expanded="true"],
+.apply_btn:hover {
+    background: var(--brand-green-dark);
+    border-color: var(--brand-green-dark);
+}
+
+.cart_remove-btn,
+.total-row,
+.life-line-grand-total h2,
+.orders-count strong,
+.order-number,
+.order-total strong,
+.order-invoice-button svg,
+.orders-eyebrow {
+    color: var(--brand-green);
+}
+
+.coupon input,
+.life-line-checkout-card,
+.life-line-address-card,
+.life-line-payment-card,
+.life-line-payment-option,
+.input-group input,
+.input-group select,
+.input-group textarea {
+    border-color: var(--brand-line);
+}
+
+.life-line-address-card:hover,
+.life-line-payment-option:hover,
+.life-line-payment-option.active {
+    border-color: var(--brand-green);
+    background: #F7FBF8;
+}
+
+.life-line-address-card.active {
+    border-color: var(--brand-green);
+    background: #EAF4ED;
+}
+
+.life-line-address-card input,
+.life-line-payment-option input {
+    accent-color: var(--brand-green);
+}
+
+.life-line-empty-box,
+.orders-empty,
+.orders-state {
+    color: var(--brand-slate);
+    border-color: var(--brand-line);
+}
+
+.order-product-order-meta {
+    background: var(--brand-soft);
+    border-color: var(--brand-line);
+}
+
+.order-invoice-button,
+.orders-btn,
+.continue-shopping {
+    background: var(--brand-navy);
+    color: #fff;
+}
+
+.order-invoice-button:hover:not(:disabled),
+.orders-btn:hover {
+    background: #102B49;
+}
+
+.continue-shopping {
+    background: transparent;
+    color: var(--brand-green);
+}
+
+.page_title,
+.product-category,
+.shop_filter_title,
+.filter_group label,
+.select-btn,
+.select-option,
+.new-price,
+.star-icon,
+.rating-val {
+    color: var(--brand-navy);
+}
+
+.title_description,
+.shop_subcategory_item,
+.product-title,
+.product-variant-label {
+    color: var(--brand-slate);
+}
+
+.shop_category_filter,
+.shop_filter_box,
+.shop_category_list,
+.shop_subcategory_list,
+.shop_category_preview,
+.filter_sidebar {
+    background: var(--brand-soft);
+    border-color: var(--brand-line);
+}
+
+.shop_category_item:hover,
+.shop_category_active,
+.shop_subcategory_active {
+    background: var(--brand-green);
+    color: #fff;
+}
+
+.shop_subcategory_item:hover {
+    background: var(--brand-navy);
+    color: #fff;
+}
+
+.select-btn,
+.select-options {
+    background: #fff;
+    border-color: var(--brand-line);
+}
+
+.select-btn:hover,
+.select-btn:focus,
+.select-option:hover {
+    border-color: var(--brand-green);
+    color: var(--brand-green);
+}
+
+.select-option.active {
+    background: var(--brand-green);
+    color: #fff;
+}
+
+.product_card:focus-visible {
+    outline-color: var(--brand-green);
+}
+
+.badge,
+.offer-badge,
+.quick-add-bar,
+.page-num.active {
+    background: var(--brand-navy);
+}
+
+.favorite_btn {
+    background: #fff;
+    color: var(--brand-slate);
+    border: 1px solid var(--brand-line);
+}
+
+.favorite_btn.active,
+.quick-add-bar:hover {
+    color: var(--brand-green);
+}
+
+.page-num {
+    color: var(--brand-navy);
+    border-color: var(--brand-line);
+}
+
+.payment-success-page {
+    background: var(--brand-soft);
+}
+
+.payment-success-card {
+    background: #fff;
+    border-top: 5px solid var(--brand-green);
+}
+
+.payment-loader {
+    border-top-color: var(--brand-green);
+}
+
+.payment-title,
+.info-row strong,
+.continue-shopping:hover {
+    color: var(--brand-navy);
+}
+
+.orders-btn {
+    border: 0;
+}
+
 /* Hero/media overlays keep text readable while using Lifeline navy as the anchor. */
 .hero-split-layout {
     background: var(--brand-soft);
@@ -514,4 +777,15 @@ h4,
     --soft: var(--brand-soft);
     --accent: var(--brand-green);
     --accent-dark: var(--brand-green-dark);
+}
+
+/* Keep an empty catalog informative when the independent database has no products yet. */
+.catalog-container .no-products {
+    color: var(--brand-slate) !important;
+    background: var(--brand-soft);
+    border: 1px solid var(--brand-line);
+    border-radius: 14px;
+    margin: 0;
+    padding: 32px 20px !important;
+    text-align: center;
 }

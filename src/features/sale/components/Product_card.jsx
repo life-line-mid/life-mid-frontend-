@@ -170,7 +170,13 @@ function Product_card({ products = [], isLoading, error, page = 1, pageSize = 14
         return <div className="catalog-container homepage-product-catalog"><section className="products shop-many-products">{Array.from({ length: 8 }).map((_, index) => <div className="product_card skeleton-card" key={index}><div className="product_img skeleton"></div><div className="product_info"><div className="skeleton skeleton-text category-skeleton"></div><div className="skeleton skeleton-text title-skeleton"></div><div className="skeleton skeleton-text price-skeleton"></div></div></div>)}</section></div>;
     }
     if (error) return <p className="error-state">Unable to load products. Please try again.</p>;
-    if (!cardItems.length) return null;
+    if (!cardItems.length) {
+        return (
+            <div className="catalog-container homepage-product-catalog">
+                <p className="no-products">No products are available yet. Please check back soon.</p>
+            </div>
+        );
+    }
 
     return <div className="catalog-container homepage-product-catalog"><section className={`products ${cardItems.length <= 3 ? "shop-few-products" : "shop-many-products"}`}>
         {cardItems.map(({ product, variant, unit, key }) => {
