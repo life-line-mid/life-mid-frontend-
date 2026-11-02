@@ -115,7 +115,7 @@
 .hero-split-layout {
     width: 100%;
     /* The hero occupies the full row when side banners are intentionally absent. */
-    height: clamp(280px, 24vw, 420px);
+    height: clamp(320px, 26vw, 460px);
     display: flex;
     gap: 0; /* no gap */
     padding: 0; /* padding moved to wrapper */
@@ -153,7 +153,7 @@
 
 .hero-loading-skeleton,
 .side-banner-loading-skeleton {
-    min-height: 280px;
+    min-height: 320px;
 }
 
 /* ---------------- Fixed Side Banner (Right ~28%) ---------------- */
