@@ -67,12 +67,12 @@ Thank you.`;
                 </span>
 
                 <h1>
-                    We'd Love To Hear From You
+                    Enquire about medical supplies
                 </h1>
 
                 <p>
-                    Have a question about our collections,
-                    an order, or need assistance?
+                    Contact our team to enquire about availability,
+                    product information and quotations.
                     Fill out the form below and send us
                     a message directly on WhatsApp.
                 </p>
@@ -85,38 +85,38 @@ Thank you.`;
 
                 <div className="contact-info">
 
-                    <h2>Get In Touch</h2>
+                    <h2>Contact our team</h2>
 
                     <div className="info-box">
 
-                        <h4>Business Hours</h4>
+                        <h4>Enquiries</h4>
 
                         <p>
-                            Monday - Friday
+                            Availability and quotations
                         </p>
 
                         <p>
-                            9:00 AM - 6:00 PM
-                        </p>
-
-                    </div>
-
-                    <div className="info-box">
-
-                        <h4>Response Time</h4>
-
-                        <p>
-                            We usually reply within a few hours on WhatsApp.
+                            Share the products or categories you need.
                         </p>
 
                     </div>
 
                     <div className="info-box">
 
-                        <h4>Need Immediate Help?</h4>
+                        <h4>What to include</h4>
 
                         <p>
-                            Send us a WhatsApp message and our team will assist you as soon as possible.
+                            Include quantities, preferred specifications and any timing requirements when known.
+                        </p>
+
+                    </div>
+
+                    <div className="info-box">
+
+                        <h4>Product details</h4>
+
+                        <p>
+                            Send us a WhatsApp message and our team will follow up with practical next steps.
                         </p>
 
                     </div>
@@ -199,35 +199,23 @@ Thank you.`;
                             </option>
 
                             <option>
-                                Order Status
+                                Availability enquiry
                             </option>
 
                             <option>
-                                Shipping & Delivery
+                                Quotation request
                             </option>
 
                             <option>
-                                Returns & Exchanges
+                                Product information
                             </option>
 
                             <option>
-                                Payment Issue
+                                Supply support
                             </option>
 
                             <option>
-                                Size & Fit Assistance
-                            </option>
-
-                            <option>
-                                General Enquiry
-                            </option>
-
-                            <option>
-                                Collaboration
-                            </option>
-
-                            <option>
-                                Feedback & Suggestions
+                                General enquiry
                             </option>
 
                         </select>

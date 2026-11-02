@@ -20,6 +20,7 @@ function Footer() {
 
                     <div className="footer-column brand">
                         <img src={footerlogo} alt="Life-line Medical Supplies" className="footer-logo" />
+                        <p>Medical supplies, made easier to source.</p>
                     </div>
 
                     <div className="footer-column">
@@ -36,12 +37,12 @@ function Footer() {
                     </div>
 
                     <div className="footer-column">
-                        <h3>Customer Care</h3>
+                        <h3>Enquiries</h3>
 
                         <ul>
                             <li><Link to="/profile">My Account</Link></li>
                             <li><Link to="/myorders">Track Order</Link></li>
-                            <li><Link to="/myorders">Shipping &amp; Delivery</Link></li>
+                            <li><Link to="/contact">Availability &amp; quotations</Link></li>
 
                         </ul>
                     </div>
@@ -63,11 +64,11 @@ function Footer() {
                     </div>
 
                     <div className="footer-column payment">
-                        <h3>Order Options</h3>
+                        <h3>Contact our team</h3>
 
                         <div className="payment-options">
-                            <span>COD</span>
-                            <span>WhatsApp</span>
+                            <span>Product enquiries</span>
+                            <span>Quotation support</span>
                         </div>
                     </div>
 

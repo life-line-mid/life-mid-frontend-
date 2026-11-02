@@ -1,4 +1,3 @@
-import { useEffect, useRef, useState } from "react";
 import "./Home.css";
 import Heropage from "./components/Heropage";
 import Shop_by_category from "./components/Shop_by_category";
@@ -10,8 +9,7 @@ import Homepage_Query from "./queries/Homepage_Query";
 import Product_Query from "../sale/queries/Product_Query";
 import Offer_poster from "../../hooks/offers/page/Offer_poster";
 import ContactUs from "../../components/Contact";
-import vedio1 from "../../assets/life-line-video-one.mp4";
-import vedio2 from "../../assets/life-line-video-two.mp4";
+import brandLogo from "../../assets/navbar-logo.png";
 
 const asArray = (value) => {
     if (Array.isArray(value)) return value;
@@ -51,54 +49,6 @@ function HomeLoading() {
     );
 }
 
-function DeferredHeritageVideo({ source, label }) {
-    const videoRef = useRef(null);
-    const [shouldLoad, setShouldLoad] = useState(false);
-    const [isReady, setIsReady] = useState(false);
-
-    useEffect(() => {
-        const video = videoRef.current;
-        if (!video || !("IntersectionObserver" in window)) {
-            setShouldLoad(true);
-            return undefined;
-        }
-
-        const observer = new IntersectionObserver(([entry]) => {
-            if (!entry.isIntersecting) return;
-            setShouldLoad(true);
-            observer.disconnect();
-        }, { rootMargin: "240px 0px" });
-
-        observer.observe(video);
-        return () => observer.disconnect();
-    }, []);
-
-    useEffect(() => {
-        if (!shouldLoad) return;
-        videoRef.current?.play?.().catch(() => {
-            // Playback is optional; the poster remains useful if a browser blocks it.
-        });
-    }, [shouldLoad]);
-
-    return (
-        <div className="heritage-video-frame">
-            {!isReady && <div className="heritage-video-skeleton skeleton" role="status" aria-label={`Loading ${label}`} />}
-            <video
-                ref={videoRef}
-                className={`heritage-video ${isReady ? "media-is-ready" : "media-is-loading"}`}
-                muted
-                loop
-                playsInline
-                preload="none"
-                onLoadedData={() => setIsReady(true)}
-                aria-label={label}
-            >
-                {shouldLoad && <source src={source} type="video/mp4" />}
-            </video>
-        </div>
-    );
-}
-
 function Home() {
     const { data: homepageData = {}, isLoading, isError, error, refetch } = Homepage_Query();
     const homepageBrands = asArray(homepageData.shop_by_brand);
@@ -132,7 +82,7 @@ function Home() {
             <Heropage heroBanners={heroBanners} />
 
             {categories.length > 0 && (
-                <div className="category-section-wrapper" style={{ background: "#fbfbf6", padding: "14px 15px 28px" }}>
+                <div className="category-section-wrapper" style={{ background: "#F3F6F8", padding: "14px 15px 28px" }}>
                     <Shop_by_category categories={categories} />
                 </div>
             )}
@@ -152,15 +102,16 @@ function Home() {
 
             <section className="section-heritage">
                 <div className="section-heritage-text">
-                    <span className="heritage-tag">OUR PROMISE</span>
-                    <h2>Innovation Meets Premium Lifestyle</h2>
-                    <p>At life-line, every product is selected with a focus on quality, performance, and modern design. From powerful electronics to top-tier cosmetics, our collections are thoughtfully curated for customers who value excellence.</p>
-                    <p>Blending the latest tech trends with lifestyle essentials, we create a shopping experience that elevates your everyday life.</p>
+                    <span className="heritage-tag">OUR APPROACH</span>
+                    <h2>Medical supplies, made easier to source.</h2>
+                    <p>Lifeline Medical Supplies helps organisations source dependable healthcare supplies and consumables with clear product information and practical service.</p>
+                    <p>Contact our team to enquire about availability and quotations.</p>
                 </div>
 
                 <div className="section-heritage-gallery">
-                    <DeferredHeritageVideo source={vedio1} label="Technology collection preview" />
-                    <DeferredHeritageVideo source={vedio2} label="Lifestyle collection preview" />
+                    <div className="heritage-brand-panel">
+                        <img src={brandLogo} alt="Lifeline Medical Supplies" />
+                    </div>
                 </div>
             </section>
 

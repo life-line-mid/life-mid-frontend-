@@ -1,0 +1,517 @@
+/* Lifeline Medical Supplies brand layer.
+ * Source: Lifeline master brand system — navy, green, slate, soft grey and white.
+ * This file intentionally sits after feature styles so legacy theme literals do not
+ * leak into the reusable project surfaces.
+ */
+:root {
+    --brand-navy: #15365B;
+    --brand-green: #2F8D45;
+    --brand-green-dark: #246D36;
+    --brand-slate: #53616D;
+    --brand-soft: #F3F6F8;
+    --brand-line: #D9E2E8;
+    --brand-focus: rgba(47, 141, 69, .28);
+
+    --admin-ink: var(--brand-navy);
+    --admin-muted: var(--brand-slate);
+    --admin-brand: var(--brand-green);
+    --admin-brand-dark: var(--brand-green-dark);
+    --admin-bg: var(--brand-soft);
+    --admin-line: var(--brand-line);
+    --admin-focus: var(--brand-focus);
+}
+
+body {
+    background: var(--brand-soft);
+    color: var(--brand-navy);
+}
+
+h1,
+h2,
+h3,
+h4,
+.topbar-logo-link,
+.footer-column h3 {
+    font-family: "Montserrat", Inter, Arial, sans-serif;
+}
+
+/* Public navigation */
+.navbar,
+.navbar.scrolled,
+.nav_main {
+    background: var(--brand-white, #fff);
+    color: var(--brand-navy);
+}
+
+.nav_main {
+    border-bottom: 1px solid var(--brand-line);
+    box-shadow: 0 4px 18px rgba(21, 54, 91, .06);
+}
+
+.nav_link,
+.nav_icon,
+.nav_toggle,
+.nav-icon-button,
+.mobile_bottom_item,
+.mobile-menu-link,
+.mobile-category-toggle {
+    color: var(--brand-navy);
+}
+
+.nav_link:hover,
+.nav_link:focus-visible,
+.nav_link.active,
+.nav_icon:hover,
+.nav-icon-button:hover,
+.nav_toggle:hover,
+.mobile_bottom_item:hover,
+.mobile_bottom_item.active,
+.mobile-menu-link:hover,
+.mobile-menu-link:focus-visible,
+.mobile-menu-link.active,
+.mobile-category-toggle:hover {
+    color: var(--brand-green);
+}
+
+.nav_link::after {
+    background: var(--brand-green);
+}
+
+.cart span,
+.bottom_icon span {
+    background: var(--brand-green);
+}
+
+.nav_search_input,
+.search_dropdown,
+.search-suggestions,
+.mega_menu,
+.mobile_menu,
+.mobile_bottom {
+    background: #fff;
+    border-color: var(--brand-line);
+}
+
+.nav_search_input:focus,
+.search_dropdown input:focus {
+    border-color: var(--brand-green);
+    box-shadow: 0 0 0 3px var(--brand-focus);
+}
+
+.input_search_icon,
+.search_dropdown .input_search_icon,
+.mega_title,
+.mega_link:hover,
+.mega_link:focus-visible,
+.mobile_categories a:hover,
+.mobile_categories a:focus-visible,
+.mobile_categories a.active {
+    color: var(--brand-green);
+}
+
+.mega_title,
+.mega_link,
+.mobile-menu-link,
+.mobile-submenu-link {
+    color: var(--brand-navy);
+}
+
+.mega_link:hover,
+.mega_link:focus-visible,
+.mobile_categories a:hover,
+.mobile_categories a:focus-visible,
+.mobile_categories a.active {
+    background: #EAF4ED;
+}
+
+.mobile_bottom_item.active .mobile_bottom_icon,
+.mobile_bottom_item.active .bottom_icon {
+    background: #EAF4ED;
+    color: var(--brand-green);
+}
+
+/* Public footer: the supplied logo is a full-colour lockup for a light canvas. */
+.footer {
+    background: var(--brand-soft);
+    color: var(--brand-navy);
+    border-top: 1px solid var(--brand-line);
+}
+
+.brand p,
+.footer-column ul li,
+.footer-column a {
+    color: var(--brand-slate);
+}
+
+.footer-column h3,
+.footer-column ul li:hover,
+.footer-column a:hover,
+.social-icons,
+.social-icons a {
+    color: var(--brand-green);
+}
+
+.footer-column a:focus-visible {
+    outline-color: var(--brand-green);
+}
+
+.payment-options span {
+    border-color: #B8D9C0;
+    color: var(--brand-navy);
+}
+
+.copyright {
+    background: var(--brand-navy);
+    color: rgba(255, 255, 255, .88);
+}
+
+/* Homepage surfaces and actions */
+.homepage-discovery,
+.homepage-state,
+.category-section-wrapper,
+.hero-page-wrapper {
+    background: #fff;
+}
+
+.homepage-section-eyebrow,
+.heritage-tag,
+.brand-showcase-eyebrow,
+.brand-showcase-card-content > span:first-child {
+    color: var(--brand-green);
+}
+
+.homepage-benefit {
+    border-top-color: var(--brand-green);
+}
+
+.homepage-benefit-icon,
+.speciality_icon {
+    color: var(--brand-green);
+    background: #EAF4ED;
+}
+
+.homepage-state button,
+.shop-btn-premium:hover,
+.hero-page-wrapper .shop-btn-premium:hover,
+.hero-page-wrapper .shop-btn-premium:focus-visible,
+.hero-page-wrapper .shop-btn-premium:active {
+    background: var(--brand-green);
+    border-color: var(--brand-green);
+}
+
+.homepage-view-all:hover,
+.homepage-view-all:focus-visible {
+    background: var(--brand-navy);
+    border-color: var(--brand-navy);
+}
+
+.section-heritage,
+.brand-showcase {
+    background: var(--brand-soft);
+}
+
+/* About and enquiry pages use the same restrained healthcare-supply language. */
+.about-modern-wrapper,
+.contact-page {
+    background-color: #fff;
+    color: var(--brand-navy);
+}
+
+.about-modern-story,
+.about-human-values {
+    background-color: var(--brand-soft);
+}
+
+.about-modern-story::before,
+.about-human-values::before {
+    background-image: none;
+}
+
+.hero-eyebrow,
+.contact-tag,
+.info-box h4,
+.value-card h3,
+.quote-author {
+    color: var(--brand-green);
+}
+
+.hero-display,
+.story-sticky h2,
+.values-header h2,
+.contact-header h1,
+.contact-info h2,
+.highlight-title {
+    color: var(--brand-navy);
+}
+
+.hero-italic,
+.hero-subtext,
+.story-sticky p,
+.highlight-text,
+.values-header p,
+.value-card p,
+.contact-header p,
+.info-box p,
+.input-group label {
+    color: var(--brand-slate);
+}
+
+.hero-modern-btn,
+.whatsapp-btn {
+    background: var(--brand-green);
+}
+
+.hero-modern-btn:hover,
+.whatsapp-btn:hover {
+    background: var(--brand-green-dark);
+}
+
+.value-card,
+.contact-info,
+.contact-form {
+    background: var(--brand-soft);
+    border: 1px solid var(--brand-line);
+}
+
+.about-modern-quote {
+    background: var(--brand-navy);
+}
+
+.about-brand-image {
+    object-fit: contain !important;
+    background: #fff;
+    padding: 28px;
+}
+
+.heritage-brand-panel {
+    min-height: 220px;
+    display: grid;
+    place-items: center;
+    padding: 40px;
+    background: #fff;
+    border: 1px solid var(--brand-line);
+    border-radius: 14px;
+}
+
+.heritage-brand-panel img {
+    width: min(100%, 420px);
+    height: auto;
+    display: block;
+}
+
+.input-group input,
+.input-group select,
+.input-group textarea {
+    background: #fff;
+    border-color: var(--brand-line);
+}
+
+.input-group input:focus,
+.input-group select:focus,
+.input-group textarea:focus {
+    border-color: var(--brand-green);
+    box-shadow: 0 0 0 4px var(--brand-focus);
+}
+
+/* Authentication surfaces follow the same calm, factual visual system. */
+.login-container {
+    background: linear-gradient(135deg, var(--brand-soft), #EAF4ED);
+}
+
+.login-box {
+    border-color: var(--brand-line);
+    border-top-color: var(--brand-green);
+    box-shadow: 0 15px 45px rgba(21, 54, 91, .12);
+}
+
+.auth-header h1 {
+    color: var(--brand-navy);
+}
+
+.auth-header p,
+.login-box .input-group label {
+    color: var(--brand-slate);
+}
+
+.login-box .input-group input:focus {
+    border-color: var(--brand-green);
+    box-shadow: 0 0 0 3px var(--brand-focus);
+}
+
+.login-btn {
+    background: var(--brand-green);
+}
+
+.login-btn:hover {
+    background: var(--brand-green-dark);
+}
+
+/* Hero/media overlays keep text readable while using Lifeline navy as the anchor. */
+.hero-split-layout {
+    background: var(--brand-soft);
+}
+
+.hero-overlay {
+    background: linear-gradient(90deg, rgba(21, 54, 91, .82) 0%, rgba(21, 54, 91, .42) 38%, rgba(21, 54, 91, .05) 72%);
+}
+
+.hero-content h1,
+.hero-content p,
+.hero-subtitle,
+.hero-content {
+    color: #fff;
+}
+
+.hero-page-wrapper .shop-btn-premium {
+    border-color: rgba(255, 255, 255, .8);
+}
+
+/* Admin dashboard */
+.admin-app,
+.admin-shell,
+.unauthorized-page {
+    background: var(--brand-soft);
+    color: var(--brand-navy);
+}
+
+.admin-sidebar,
+.admin-panel,
+.admin-stat-card,
+.admin-detail-card,
+.product-view-card,
+.product-tool-section,
+.orders-panel,
+.detail-page,
+.coming-soon,
+.edit-modal,
+.admin-modal,
+.product-editor-section {
+    background: #fff;
+    border-color: var(--brand-line);
+}
+
+.admin-brand,
+.admin-brand strong,
+.admin-topbar h1,
+.admin-page-header h2,
+.admin-modal-heading h3,
+.admin-detail-card h3,
+.admin-stat-card strong,
+.admin-panel-heading h3,
+.product-section-heading,
+.product-field,
+.admin-table td:first-child {
+    color: var(--brand-navy);
+}
+
+.admin-brand-logo {
+    background: transparent;
+}
+
+.admin-nav-item,
+.admin-button.secondary,
+.admin-menu,
+.icon-button,
+.admin-pagination-actions button {
+    color: var(--brand-slate);
+}
+
+.admin-nav-item:hover,
+.admin-nav-item.active {
+    background: #EAF4ED;
+    color: var(--brand-green);
+}
+
+.admin-button.primary,
+.export-button,
+.primary-button {
+    background: var(--brand-green);
+}
+
+.admin-button.primary:hover,
+.export-button:hover,
+.primary-button:hover {
+    background: var(--brand-green-dark);
+}
+
+.admin-stat-icon.orange,
+.admin-stat-icon.pink,
+.avatar.soft {
+    background: #EAF4ED;
+    color: var(--brand-green);
+}
+
+.admin-stat-icon.blue {
+    background: #E7F0F8;
+    color: var(--brand-navy);
+}
+
+.admin-stat-icon.purple {
+    background: #EEF2F6;
+    color: var(--brand-slate);
+}
+
+.admin-search:focus-within,
+.admin-select:focus-within,
+.admin-date:focus-within,
+.admin-form-field input:focus,
+.admin-form-field select:focus,
+.admin-form-field textarea:focus,
+.admin-modal input:focus {
+    border-color: var(--brand-green);
+    box-shadow: 0 0 0 3px var(--brand-focus);
+}
+
+.admin-table th,
+.admin-filters,
+.order-filters {
+    background: var(--brand-soft);
+}
+
+.admin-table tbody tr:hover,
+.admin-table tbody tr:focus-visible,
+.table-wrap tbody tr:hover {
+    background: #F7FBF8;
+}
+
+.admin-table td,
+.admin-table th,
+.admin-panel-heading,
+.admin-table-wrap,
+.admin-sidebar-footer {
+    border-color: var(--brand-line);
+}
+
+.admin-panel-heading > svg,
+.admin-detail-card h3 svg,
+.admin-back-link,
+.admin-loading .spin,
+.order-link,
+.action-link {
+    color: var(--brand-green);
+}
+
+.admin-brand-mark,
+.brand-mark,
+.avatar {
+    background: var(--brand-navy);
+}
+
+.admin-brand-mark {
+    box-shadow: 0 7px 15px rgba(21, 54, 91, .16);
+}
+
+.admin-focus,
+:focus-visible {
+    outline-color: var(--brand-green);
+}
+
+/* Legacy order-dashboard surfaces still use these shared variables. */
+.admin-shell {
+    --ink: var(--brand-navy);
+    --muted: var(--brand-slate);
+    --line: var(--brand-line);
+    --soft: var(--brand-soft);
+    --accent: var(--brand-green);
+    --accent-dark: var(--brand-green-dark);
+}

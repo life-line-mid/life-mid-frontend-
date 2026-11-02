@@ -82,6 +82,7 @@ const cartLength = cart.total_items ?? 0;
         { name: "New Arrivals", path: "/shop?sort=new" },
         { name: "Offers", path: "/shop?offer=true", offer: offerActive },
         { name: "About", path: "/about" },
+        { name: "Contact", path: "/contact" },
     ];
 
     const [menuOpen, setMenuOpen] = useState(false);

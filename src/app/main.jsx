@@ -6,6 +6,7 @@ import { GoogleOAuthProvider } from "@react-oauth/google";
 import { Toaster } from "sonner";
 import "./../index.css";
 import App from "./App.jsx";
+import "./../brandTheme.css";
 import { GOOGLE_CLIENT_ID } from "../features/auth/googleConfig";
 
 const clientQuery = new QueryClient();
@@ -19,9 +20,9 @@ const application = (
       duration={3000}
       toastOptions={{
         style: {
-          background: "#FFF3E0",
-          color: "#4B636D",
-          border: "1px solid #FFE0B2",
+          background: "#EAF4ED",
+          color: "#15365B",
+          border: "1px solid #B8D9C0",
           borderRadius: "16px",
           padding: "14px 18px",
           fontWeight: "700",

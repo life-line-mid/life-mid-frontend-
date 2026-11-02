@@ -1,10 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import '../styles/About.css';
 
-import heroImg from "../../../assets/life-line_hero_tech.png";
-import vibeImg from "../../../assets/life-line_lifestyle_vibe.png";
-import AboutFirstimage from "../../../assets/About-first-img.png";
-import AboutSecondimage from "../../../assets/About-second-img.png";
+import brandLogo from "../../../assets/navbar-logo.png";
 
 import { useNavigate } from "react-router-dom";
 
@@ -13,16 +10,16 @@ const About = () => {
 
     const pillars = [
         {
-            title: "Curated with Care",
-            text: "Every item in our collection is handpicked. We test, we use, and we love the products we sell. If it's not good enough for us, it won't make it to you."
+            title: "Reliable sourcing",
+            text: "We organise healthcare supplies with clear product information so teams can make practical sourcing decisions."
         },
         {
-            title: "A Personal Touch",
-            text: "We're a team of real people who love technology and beautiful design. When you shop with us, you're not just an order number—you're our guest."
+            title: "Practical service",
+            text: "Our team provides a straightforward route to product enquiries, availability checks and quotations."
         },
         {
-            title: "Quality Over Quantity",
-            text: "We don't want to sell you everything. We just want to sell you the right thing. Products that last, inspire, and bring joy to your everyday life."
+            title: "Quality-minded",
+            text: "We aim to present dependable medical supplies accurately and communicate what we can support."
         }
     ];
 
@@ -32,22 +29,21 @@ const About = () => {
             {/* Hero Section */}
             <section className="about-modern-hero about-fade">
                 <div className="hero-text-content">
-                    <span className="hero-eyebrow">THE LIFE-LINE MANIFESTO</span>
+                    <span className="hero-eyebrow">LIFELINE MEDICAL SUPPLIES</span>
                     <h1 className="hero-display">
-                        We Don't Just Sell Tech.<br />
-                        <span className="hero-italic">We Curate Lifestyles.</span>
+                        Medical supplies,<br />
+                        <span className="hero-italic">made easier to source.</span>
                     </h1>
                     <p className="hero-subtext">
-                        Welcome to a new era of e-commerce. A place where high-performance 
-                        electronics meet the elegance of modern living. No clutter, just the best.
+                        A dependable supply partner focused on quality, trust and practical service.
                     </p>
                     <button className="hero-modern-btn" onClick={() => navigate('/shop')}>
-                        Explore the Collection <span className="arrow">→</span>
+                        Browse categories <span className="arrow">→</span>
                     </button>
                 </div>
                 <div className="hero-image-content">
                     <div className="image-frame">
-                        <img src={AboutFirstimage} alt="Modern Tech Workspace" />
+                        <img src={brandLogo} alt="Lifeline Medical Supplies" className="about-brand-image" />
                     </div>
                 </div>
             </section>
@@ -56,32 +52,31 @@ const About = () => {
             <section className="about-modern-story about-fade">
                 <div className="story-left">
                     <div className="story-sticky">
-                        <h2>Born out of a desire for <i>better</i>.</h2>
+                        <h2>Built around <i>dependable supply</i>.</h2>
                         <p>
-                            We grew tired of the endless scroll. The chaotic marketplaces filled with
-                            subpar products. Life-line was built to be different—an oasis of quality in
-                            a sea of quantity.
+                            Lifeline Medical Supplies is positioned as a practical healthcare-supplies
+                            distributor and sourcing partner for organisations that value clarity and consistency.
                         </p>
                         <p>
-                            Every laptop, every fragrance, every accessory on our platform has been
-                            meticulously chosen because we believe you deserve nothing but excellence.
+                            We keep the experience focused: organised categories, useful product information
+                            and a clear route to an enquiry or quotation.
                         </p>
 
                         <div className="story-highlights">
                             <div className="highlight-box">
-                                <span className="highlight-title">No Endless Scrolling</span>
-                                <span className="highlight-text">We've done the hard work of finding the best products so you don't have to.</span>
+                                <span className="highlight-title">Clear categories</span>
+                                <span className="highlight-text">Find the supply areas relevant to your organisation without unnecessary clutter.</span>
                             </div>
                             <div className="highlight-box">
-                                <span className="highlight-title">Built on Trust</span>
-                                <span className="highlight-text">Every brand we partner with shares our commitment to craftsmanship and honesty.</span>
+                                <span className="highlight-title">Straightforward enquiries</span>
+                                <span className="highlight-text">Contact our team to ask about availability and quotations.</span>
                             </div>
                         </div>
 
                     </div>
                 </div>
                 <div className="story-right">
-                    <img src={AboutSecondimage} alt="Lifestyle Vibe" className="story-vibe-img" />
+                    <img src={brandLogo} alt="Lifeline Medical Supplies" className="story-vibe-img about-brand-image" />
                 </div>
             </section>
 
@@ -89,7 +84,7 @@ const About = () => {
             <section className="about-human-values about-fade">
                 <div className="values-header">
                     <h2>Our Philosophy</h2>
-                    <p>What drives us every single day.</p>
+                    <p>Trust, quality and reliable supply guide our service.</p>
                 </div>
                 <div className="values-grid">
                     {pillars.map((pillar, index) => (
@@ -104,10 +99,9 @@ const About = () => {
             {/* Editorial Quote */}
             <section className="about-modern-quote about-fade">
                 <blockquote>
-                    "Technology should elevate your life, not complicate it. 
-                    Design should inspire, not just function. This is the heart of life-line."
+                    "Trust. Quality. Reliable supply."
                 </blockquote>
-                <div className="quote-author">— The Life-line Team</div>
+                <div className="quote-author">— Lifeline Medical Supplies</div>
             </section>
 
         </div>

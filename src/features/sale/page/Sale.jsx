@@ -95,7 +95,7 @@ function Sale() {
                     <p className="title_description">
                         {isOfferPage
                             ? "Explore our exclusive discounted products."
-                            : "Explore our curated collection of premium tech and lifestyle products."}
+                            : "Explore organised categories of medical supplies and consumables."}
                     </p>
                 </div>
 
