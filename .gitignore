@@ -27,5 +27,4 @@ dist-ssr
 .env
 .env.production
 build/
-.vercel
 .env*

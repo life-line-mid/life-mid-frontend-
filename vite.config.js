@@ -4,22 +4,23 @@ import react from '@vitejs/plugin-react'
 // https://vite.dev/config/
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '')
-  const devApiTarget = env.VITE_DEV_API_PROXY_TARGET || 'https://16.16.204.58'
+  const devApiTarget = env.VITE_DEV_API_PROXY_TARGET
+  const server = {}
+
+  if (devApiTarget) {
+    server.proxy = {
+      '/backend': {
+        target: devApiTarget,
+        changeOrigin: true,
+        secure: true,
+        rewrite: (path) => path.replace(/^\/backend/, ''),
+      },
+    }
+  }
 
   return {
     plugins: [react()],
-    server: {
-      // Keep local development same-origin so cookie auth and CSRF work even
-      // when Django intentionally allows only the production storefronts.
-      proxy: {
-        '/backend': {
-          target: devApiTarget,
-          changeOrigin: true,
-          secure: true,
-          rewrite: (path) => path.replace(/^\/backend/, ''),
-        },
-      },
-    },
+    server,
     test: {
       environment: 'jsdom',
       setupFiles: './src/test/setup.js',

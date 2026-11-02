@@ -78,8 +78,7 @@ async function refreshAccessToken() {
 
 const client = axios.create({ baseURL: `${API_URL}/`, withCredentials: true });
 
-// The deployed storefront and dashboard use HttpOnly auth cookies through
-// the same-origin `/backend` proxy. Do not attach a stale token retained in
+// Same-origin API paths use HttpOnly auth cookies. Do not attach a stale token retained in
 // session storage to those requests: Axios would prefer that bearer token
 // over the current cookie session and can incorrectly downgrade an admin
 // request to a previous user's permissions. Absolute API origins still use
