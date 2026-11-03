@@ -344,8 +344,8 @@
 }
 
 .shop-btn-premium:hover {
-    background: #ff9000;
-    border-color: #ff9000;
+    background: #2F8D45;
+    border-color: #2F8D45;
     color: #fff;
     transform: translateY(-2px);
     box-shadow: 0 10px 25px rgba(0,0,0,0.1);
@@ -653,8 +653,8 @@
 .hero-page-wrapper .shop-btn-premium:hover,
 .hero-page-wrapper .shop-btn-premium:focus-visible,
 .hero-page-wrapper .shop-btn-premium:active {
-    background: #ff9000;
-    border-color: #ff9000;
+    background: #2F8D45;
+    border-color: #2F8D45;
     color: #fff;
     box-shadow: none;
     transform: none;

@@ -31,7 +31,7 @@
 }
 
 .footer-column h3 {
-    color: #FF9000;
+    color: #2F8D45;
     margin-bottom: 18px;
     font-size: 18px;
     text-transform: uppercase;
@@ -53,10 +53,10 @@
 }
 
 .footer-column ul li:hover {
-    color: #FF9000;
+    color: #2F8D45;
 }
 .footer-column a:hover {
-    color: #FF9000;
+    color: #2F8D45;
 }
 .footer-column a{
     color: rgba(255,255,255,0.7);
@@ -66,7 +66,7 @@
 }
 
 .footer-column a:focus-visible {
-    outline: 2px solid #FF9000;
+    outline: 2px solid #2F8D45;
     outline-offset: 3px;
     border-radius: 2px;
 }
@@ -75,10 +75,10 @@
     display: flex;
     gap: 18px;
     font-size: 20px;
-    color: #FF9000;
+    color: #2F8D45;
 }
 .social-icons a{
-    color: #FF9000;
+    color: #2F8D45;
 }
 
 .social-icons a {

@@ -6,7 +6,7 @@
 }
 
 .admin-logout-button:focus-visible {
-    outline: 3px solid rgba(255, 144, 0, .25);
+    outline: 3px solid rgba(47, 141, 69, .25);
     outline-offset: 2px;
 }
 

@@ -1,5 +1,5 @@
 .token-blacklist-page .admin-table { min-width: 980px; }
-.token-blacklist-scroll-hint { display: none; margin: 0; padding: 9px 14px; border-bottom: 1px solid var(--admin-line); background: #fff8ed; color: #76634a; font-size: 12px; line-height: 1.4; }
+.token-blacklist-scroll-hint { display: none; margin: 0; padding: 9px 14px; border-bottom: 1px solid var(--admin-line); background: #EAF4ED; color: #76634a; font-size: 12px; line-height: 1.4; }
 .token-blacklist-action { min-width: max-content; min-height: 36px; padding: 7px 10px; font-size: 12px; white-space: nowrap; }
 
 @media (max-width: 700px) {

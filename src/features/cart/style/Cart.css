@@ -88,8 +88,8 @@
     height: 32px;
     border: none;
     border-radius: 6px;
-    background: #FFF5E5;
-    color: #FF9000;
+    background: #EAF4ED;
+    color: #2F8D45;
     font-size: 20px;
     cursor: pointer;
     display: flex;
@@ -109,7 +109,7 @@
 .cart_remove-btn {
     border: none;
     background: none;
-    color: #FF9000;
+    color: #2F8D45;
     cursor: pointer;
     font-size: 14px;
 }
@@ -171,14 +171,14 @@
     width: 120px;
     border: none;
     border-radius: 8px;
-    background: #FF9000;
+    background: #2F8D45;
     color: #FFFFFF;
     cursor: pointer;
     transition: .3s;
 }
 
 .coupon button:hover {
-    background: #D97F00;
+    background: #246D36;
 }
 
 .coupon-inactive-warning {
@@ -212,7 +212,7 @@
     border-top: 1px solid #EEEFE9;
     font-size: 28px;
     font-weight: bold;
-    color: #FF9000;
+    color: #2F8D45;
     font-family: Georgia, serif;
 }
 
@@ -224,7 +224,7 @@
     padding: 16px;
     border: none;
     border-radius: 8px;
-    background: #FF9000;
+    background: #2F8D45;
     color: #FFFFFF;
     font-size: 16px;
     cursor: pointer;
@@ -232,7 +232,7 @@
 }
 
 .continue-btn:hover {
-    background: #D97F00;
+    background: #246D36;
 }
 
 /* TABLET */

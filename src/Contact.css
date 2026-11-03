@@ -17,7 +17,7 @@
 
 .contact-tag {
     display: inline-block;
-    color: #FF9000;
+    color: #2F8D45;
     font-size: 13px;
     letter-spacing: 3px;
     font-weight: 600;
@@ -67,7 +67,7 @@
 }
 
 .info-box h4 {
-    color: #FF9000;
+    color: #2F8D45;
     margin-bottom: 10px;
     font-size: 17px;
 }
@@ -126,10 +126,10 @@
 .input-group select:focus,
 .input-group textarea:focus {
 
-    border-color: #FF9000;
+    border-color: #2F8D45;
 
     box-shadow:
-    0 0 0 4px rgba(255,144,0,.12);
+    0 0 0 4px rgba(47, 141, 69,.12);
 
 }
 
@@ -141,7 +141,7 @@
     border: none;
     border-radius: 12px;
 
-    background:#FF9000;
+    background:#2F8D45;
 
     color: #FFFFFF;
 
@@ -155,12 +155,12 @@
 
 .whatsapp-btn:hover {
 
-    background: #D97F00;
+    background: #246D36;
 
     transform: translateY(-3px);
 
     box-shadow:
-    0 18px 30px rgba(255,144,0,.28);
+    0 18px 30px rgba(47, 141, 69,.28);
 
 }
 

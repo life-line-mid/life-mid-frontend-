@@ -73,7 +73,7 @@
 }
 
 .invoice-page .invoice-back-btn:hover {
-    background: #fff8ed;
+    background: #EAF4ED;
     border-color: #f0c27b;
     color: #a85f08;
     box-shadow: 0 5px 12px rgba(40, 62, 66, .08);
@@ -81,8 +81,8 @@
 }
 
 .invoice-page .invoice-print-btn {
-    border-color: #f28a13;
-    background: #f28a13;
+    border-color: #2F8D45;
+    background: #2F8D45;
     color: #fff;
     box-shadow: 0 7px 15px rgba(242, 138, 19, .18);
 }
@@ -96,7 +96,7 @@
 
 .invoice-page .invoice-back-btn:focus-visible,
 .invoice-page .invoice-print-btn:focus-visible {
-    outline: 3px solid rgba(255, 144, 0, .28);
+    outline: 3px solid rgba(47, 141, 69, .28);
     outline-offset: 2px;
 }
 

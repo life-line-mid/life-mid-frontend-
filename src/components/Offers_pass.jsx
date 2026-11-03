@@ -6,7 +6,7 @@ function Offers_pass() {
   const { data } = Offer_Query()
   return (
     <div>
-      <div style={{ height: '40px', background: '#FF9000', display: 'flex', justifyContent: 'center', alignItems: 'center', color: '#FFFFFF' }}>
+      <div style={{ height: '40px', background: '#2F8D45', display: 'flex', justifyContent: 'center', alignItems: 'center', color: '#FFFFFF' }}>
         offers pass as carousal
       </div>
 

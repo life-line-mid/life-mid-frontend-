@@ -63,13 +63,13 @@
 
 .nav_toggle:hover,
 .nav_toggle.is-open {
-    color: #FF9000;
-    background: rgba(255, 144, 0, .12);
+    color: #2F8D45;
+    background: rgba(47, 141, 69, .12);
 }
 
 .nav_toggle:active {
     color: #D97700;
-    background: rgba(255, 144, 0, .2);
+    background: rgba(47, 141, 69, .2);
     transform: scale(.92);
 }
 
@@ -145,7 +145,7 @@ a {
     left: 0;
     width: 0;
     height: 2px;
-    background: #FF9000;
+    background: #2F8D45;
     transition: .3s;
 }
 
@@ -165,7 +165,7 @@ a {
 
 .nav_link:hover,
 .nav_link.active {
-    color: #FF9000 !important;
+    color: #2F8D45 !important;
 }
 
 .dropdown_icon {
@@ -216,7 +216,7 @@ a {
 
 .search-suggestion:hover,
 .search-suggestion:focus-visible {
-    background: rgba(255, 144, 0, .12);
+    background: rgba(47, 141, 69, .12);
     outline: 0;
 }
 
@@ -308,7 +308,7 @@ a {
 .mobile-close-button:focus-visible,
 .mobile-category-toggle:focus-visible,
 .input-search-button:focus-visible {
-    outline: 2px solid #FF9000;
+    outline: 2px solid #2F8D45;
     outline-offset: 3px;
     border-radius: 4px;
 }
@@ -330,7 +330,7 @@ a {
 }
 
 .nav_icon:hover {
-    color: #FF9000 !important;
+    color: #2F8D45 !important;
 }
 
 .cart {
@@ -347,7 +347,7 @@ a {
     width: 18px;
     height: 18px;
     border-radius: 50%;
-    background: #FF9000;
+    background: #2F8D45;
     color: #FFFFFF;
     font-size: 11px;
     display: flex;
@@ -458,7 +458,7 @@ a {
 .mega_link:hover,
 .mega_link.active {
     background: #f2f5f6;
-    color: #FF9000;
+    color: #2F8D45;
     transform: translateX(3px);
 }
 
@@ -628,7 +628,7 @@ a {
 .mobile_menu > ul > li > a.active {
     background: #eef3f4;
     color: #d97700;
-    box-shadow: inset 3px 0 0 #ff9000;
+    box-shadow: inset 3px 0 0 #2F8D45;
 }
 
 .mobile-menu-link,
@@ -719,7 +719,7 @@ a {
 }
 
 .mobile_bottom_item.active {
-    color: #FF9000;
+    color: #2F8D45;
 }
 
 .mobile_bottom_icon {
@@ -778,7 +778,7 @@ a {
     width: 17px;
     height: 17px;
     border-radius: 50%;
-    background: #FF9000;
+    background: #2F8D45;
     color: #FFFFFF;
     font-size: 10px;
     display: flex;
@@ -819,7 +819,7 @@ a {
 }
 
 .search_dropdown input:focus {
-    border-color: #FF9000;
+    border-color: #2F8D45;
 }
 
 

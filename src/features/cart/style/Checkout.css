@@ -83,7 +83,7 @@
 
 .life-line-add-address-btn{
     border:none;
-    background:#FF9000;
+    background:#2F8D45;
     color: #FFFFFF;
     padding:10px 18px;
     border-radius:8px;
@@ -94,7 +94,7 @@
 }
 
 .life-line-add-address-btn:hover{
-    background:#D97F00;
+    background:#246D36;
 }
 
 .life-line-add-address-btn:active{
@@ -123,13 +123,13 @@
 }
 
 .life-line-address-card.active{
-    border-color:#FF9000;
-    background:#FFF5E5;
+    border-color:#2F8D45;
+    background:#EAF4ED;
 }
 
 .life-line-address-card input{
     margin-top:4px;
-    accent-color:#FF9000;
+    accent-color:#2F8D45;
 }
 
 .life-line-address-info{
@@ -193,13 +193,13 @@
 
 .life-line-payment-option:hover,
 .life-line-payment-option.active{
-    border-color:#FF9000;
+    border-color:#2F8D45;
     background:#FFF8EC;
 }
 
 .life-line-payment-option input{
     margin-top:3px;
-    accent-color:#FF9000;
+    accent-color:#2F8D45;
 }
 
 .life-line-payment-option span{
@@ -370,7 +370,7 @@
     height:52px;
     border:none;
     border-radius:10px;
-    background:#FF9000;
+    background:#2F8D45;
     color: #FFFFFF;
     font-size:15px;
     font-weight:600;
@@ -379,7 +379,7 @@
 }
 
 .life-line-checkout-btn:hover{
-    background:#D97F00;
+    background:#246D36;
     box-shadow:0 10px 24px rgba(139,47,69,.22);
 }
 
@@ -434,7 +434,7 @@
     margin:0;
     font-size:28px;
     font-weight:700;
-    color:#FF9000;
+    color:#2F8D45;
     letter-spacing:-.5px;
 }
 

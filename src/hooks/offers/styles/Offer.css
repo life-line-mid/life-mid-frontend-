@@ -95,7 +95,7 @@
 .offer-btn {
   margin-top: 12px;
   background-color: #F8F9F3;
-  color: #FF9000;
+  color: #2F8D45;
   border: none;
   padding: 12px 32px;
   font-size: 12px;
@@ -121,7 +121,7 @@
   align-items: center;
   justify-content: center;
   font-family: sans-serif;
-  color: #FF9000;
+  color: #2F8D45;
 }
 
 /* Responsiveness adjustments for smaller devices */

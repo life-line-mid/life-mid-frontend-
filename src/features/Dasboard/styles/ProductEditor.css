@@ -37,7 +37,7 @@
 .product-view-images { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 13px; }
 .product-view-images img { width: 82px; height: 64px; object-fit: cover; border-radius: 7px; border: 1px solid var(--admin-line); }
 .product-editor-page .admin-back-link { display: inline-flex; align-items: center; gap: 7px; padding: 10px 14px; margin: 0 0 18px; border: 1px solid var(--admin-line); border-radius: 8px; background: #fff; color: #62767d; font: 700 12px Inter, sans-serif; box-shadow: 0 2px 7px rgba(38, 64, 72, .05); transition: .2s ease; }
-.product-editor-page .admin-back-link:hover { border-color: #eaa34d; background: #fff7ec; color: var(--admin-brand-dark); transform: translateX(-2px); }
+.product-editor-page .admin-back-link:hover { border-color: #eaa34d; background: #EAF4ED; color: var(--admin-brand-dark); transform: translateX(-2px); }
 @media (max-width: 760px) { .product-view-toolbar { flex-direction: column; } .product-view-grid { grid-template-columns: 1fr; } }
 
 .product-view-page { max-width: 1280px; }

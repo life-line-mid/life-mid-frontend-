@@ -1,6 +1,6 @@
 /* Shared dashboard design layer: calm surfaces, strong hierarchy, and keyboard-first controls. */
 :root {
-    --admin-focus: rgba(255, 144, 0, .28);
+    --admin-focus: rgba(47, 141, 69, .28);
     --admin-radius-sm: 8px;
     --admin-radius-md: 14px;
     --admin-radius-lg: 18px;
@@ -50,7 +50,7 @@
 }
 
 .admin-brand-mark {
-    box-shadow: 0 7px 15px rgba(255, 144, 0, .18);
+    box-shadow: 0 7px 15px rgba(47, 141, 69, .18);
 }
 
 .admin-nav-item,
@@ -124,7 +124,7 @@
 }
 
 .admin-button.primary {
-    box-shadow: 0 7px 14px rgba(255, 144, 0, .17);
+    box-shadow: 0 7px 14px rgba(47, 141, 69, .17);
 }
 
 .admin-button.primary:hover,
@@ -231,7 +231,7 @@
 
 .admin-table tbody tr:hover,
 .admin-table tbody tr:focus-visible {
-    background: #fff8ed;
+    background: #EAF4ED;
 }
 
 .admin-table tbody tr[tabindex="0"] {
@@ -443,7 +443,7 @@
 
 .hero-save-button {
     background: var(--admin-brand);
-    box-shadow: 0 7px 14px rgba(255, 144, 0, .17);
+    box-shadow: 0 7px 14px rgba(47, 141, 69, .17);
 }
 
 .hero-save-button:hover {
@@ -679,7 +679,7 @@
 .admin-app {
     --admin-button-height: 42px;
     --admin-button-radius: 10px;
-    --admin-button-brand: #f28a13;
+    --admin-button-brand: #2F8D45;
     --admin-button-brand-hover: #d97805;
     --admin-button-ink: #293d45;
     --admin-button-muted: #61767c;
@@ -735,7 +735,7 @@
 
 .admin-app .admin-button.secondary:hover,
 .admin-app .hero-secondary-button:hover {
-    background: #fff8ed;
+    background: #EAF4ED;
     border-color: #f0c27b !important;
     color: #a85f08;
     box-shadow: 0 5px 12px rgba(40, 62, 66, .08);
@@ -806,7 +806,7 @@
 .admin-app .icon-button:hover,
 .admin-app .admin-menu:hover,
 .admin-app .admin-close:hover {
-    background: #fff8ed;
+    background: #EAF4ED;
     border-color: #f0c27b;
     color: #a85f08;
     box-shadow: 0 4px 10px rgba(40, 62, 66, .08);
@@ -884,7 +884,7 @@
 
 .admin-app .admin-back-link:hover,
 .admin-app .hero-back-link:hover {
-    background: #fff8ed;
+    background: #EAF4ED;
     border-color: #f0c27b;
     color: #a85f08;
     text-decoration: none;
@@ -916,7 +916,7 @@
 }
 
 .admin-app .table-copy-button:hover {
-    background: #fff8ed;
+    background: #EAF4ED;
     border-color: #f0c27b;
     color: #a85f08;
     transform: translateY(-1px);
@@ -938,7 +938,7 @@
 }
 
 .admin-app .coupon-add-product:hover {
-    background: #fff8ed;
+    background: #EAF4ED;
     border-color: #f0c27b;
     color: #a85f08;
     transform: translateY(-1px);

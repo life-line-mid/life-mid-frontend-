@@ -25,7 +25,7 @@
 =========================== */
 
 .profile-banner{
-    background:linear-gradient(135deg,#FF9000,#D97F00);
+    background:linear-gradient(135deg,#2F8D45,#246D36);
     border-radius:22px;
     padding:40px;
     color: #FFFFFF;
@@ -81,7 +81,7 @@
     height:92px;
     border-radius:50%;
     background: #F8F9F3;
-    color:#FF9000;
+    color:#2F8D45;
     display:flex;
     align-items:center;
     justify-content:center;
@@ -144,7 +144,7 @@
 
     transform:translateY(-4px);
 
-    box-shadow:0 18px 35px rgba(255,144,0,.12);
+    box-shadow:0 18px 35px rgba(47, 141, 69,.12);
 
 }
 
@@ -173,7 +173,7 @@
 
 .card-title svg{
 
-    color:#FF9000;
+    color:#2F8D45;
 
     font-size:24px;
 
@@ -250,9 +250,9 @@
 .input-group input:focus,
 .input-group select:focus{
 
-    border-color:#FF9000;
+    border-color:#2F8D45;
 
-    box-shadow:0 0 0 4px rgba(255,144,0,.10);
+    box-shadow:0 0 0 4px rgba(47, 141, 69,.10);
 
 }
 
@@ -298,7 +298,7 @@
 
     border-radius:12px;
 
-    background:#FF9000;
+    background:#2F8D45;
 
     color: #FFFFFF;
 
@@ -314,11 +314,11 @@
 
 .save-profile-btn:hover{
 
-    background:#D97F00;
+    background:#246D36;
 
     transform:translateY(-2px);
 
-    box-shadow:0 12px 25px rgba(255,144,0,.25);
+    box-shadow:0 12px 25px rgba(47, 141, 69,.25);
 
 }
 
@@ -400,7 +400,7 @@
 
     border-radius:12px;
 
-    background:#FF9000;
+    background:#2F8D45;
 
     color: #FFFFFF;
 
@@ -424,11 +424,11 @@
 
 .add-address-btn:hover{
 
-    background:#D97F00;
+    background:#246D36;
 
     transform:translateY(-2px);
 
-    box-shadow:0 12px 24px rgba(255,144,0,.25);
+    box-shadow:0 12px 24px rgba(47, 141, 69,.25);
 
 }
 
@@ -472,9 +472,9 @@
 
     transform:translateY(-6px);
 
-    border-color:#FF9000;
+    border-color:#2F8D45;
 
-    box-shadow:0 18px 35px rgba(255,144,0,.12);
+    box-shadow:0 18px 35px rgba(47, 141, 69,.12);
 
 }
 
@@ -530,9 +530,9 @@
 
     border-radius:25px;
 
-    background:#FFF5E5;
+    background:#EAF4ED;
 
-    color:#FF9000;
+    color:#2F8D45;
 
     font-size:12px;
 
@@ -617,7 +617,7 @@
 
 .edit-address-btn{
 
-    background:#FF9000;
+    background:#2F8D45;
 
     color: #FFFFFF;
 
@@ -625,7 +625,7 @@
 
 .edit-address-btn:hover{
 
-    background:#D97F00;
+    background:#246D36;
 
 }
 
@@ -643,7 +643,7 @@
 
     background:#FFFFFF;
 
-    color:#FF9000;
+    color:#2F8D45;
 
     border-color:#E0E0E0;
 
@@ -672,7 +672,7 @@
 
     font-size:55px;
 
-    color:#FF9000;
+    color:#2F8D45;
 
     margin-bottom:18px;
 
@@ -708,7 +708,7 @@
 
     border-radius:12px;
 
-    background:#FF9000;
+    background:#2F8D45;
 
     color: #FFFFFF;
 
@@ -724,7 +724,7 @@
 
 .add-first-address:hover{
 
-    background:#D97F00;
+    background:#246D36;
 
 }
 /*=========================================
@@ -863,7 +863,7 @@ border-radius:50%;
 
 background:#FCE8EC;
 
-color:#FF9000;
+color:#2F8D45;
 
 font-size:24px;
 
@@ -881,7 +881,7 @@ transition:.3s;
 
 .close-modal:hover{
 
-background:#FF9000;
+background:#2F8D45;
 
 color: #FFFFFF;
 
@@ -932,9 +932,9 @@ transition:.3s;
 
 .modal-grid input:focus{
 
-border-color:#FF9000;
+border-color:#2F8D45;
 
-box-shadow:0 0 0 4px rgba(255,144,0,.10);
+box-shadow:0 0 0 4px rgba(47, 141, 69,.10);
 
 }
 
@@ -962,9 +962,9 @@ transition:.3s;
 
 .modal-form textarea:focus{
 
-border-color:#FF9000;
+border-color:#2F8D45;
 
-box-shadow:0 0 0 4px rgba(255,144,0,.10);
+box-shadow:0 0 0 4px rgba(47, 141, 69,.10);
 
 }
 
@@ -997,7 +997,7 @@ width:18px;
 
 height:18px;
 
-accent-color:#FF9000;
+accent-color:#2F8D45;
 
 cursor:pointer;
 
@@ -1055,7 +1055,7 @@ background:#ECECEC;
 
 .save-btn{
 
-background:#FF9000;
+background:#2F8D45;
 
 color: #FFFFFF;
 
@@ -1063,9 +1063,9 @@ color: #FFFFFF;
 
 .save-btn:hover{
 
-background:#D97F00;
+background:#246D36;
 
-box-shadow:0 10px 20px rgba(255,144,0,.20);
+box-shadow:0 10px 20px rgba(47, 141, 69,.20);
 
 }
 
@@ -1190,9 +1190,9 @@ width:100%;
 
     transform:translateY(-6px);
 
-    border-color:#FF9000;
+    border-color:#2F8D45;
 
-    box-shadow:0 18px 35px rgba(255,144,0,.12);
+    box-shadow:0 18px 35px rgba(47, 141, 69,.12);
 
 }
 
@@ -1204,7 +1204,7 @@ width:100%;
 
     border-radius:50%;
 
-    background:#FFF5E5;
+    background:#EAF4ED;
 
     display:flex;
 
@@ -1212,7 +1212,7 @@ width:100%;
 
     align-items:center;
 
-    color:#FF9000;
+    color:#2F8D45;
 
     font-size:24px;
 
@@ -1224,7 +1224,7 @@ width:100%;
 
 .quick-card:hover .quick-icon{
 
-    background:#FF9000;
+    background:#2F8D45;
 
     color: #FFFFFF;
 
@@ -1256,13 +1256,13 @@ width:100%;
 
 .logout-card:hover{
 
-    border-color:#FF9000;
+    border-color:#2F8D45;
 
 }
 
 .logout-card:hover .quick-icon{
 
-    background:#FF9000;
+    background:#2F8D45;
 
 }
 .default-address-card{
@@ -1292,7 +1292,7 @@ width:100%;
 
 .title-icon{
     font-size:26px;
-    color:#FF9000;
+    color:#2F8D45;
 }
 
 .card-title h3{
@@ -1308,8 +1308,8 @@ width:100%;
 }
 
 .default-badge{
-    background:#FFF5E5;
-    color:#FF9000;
+    background:#EAF4ED;
+    color:#2F8D45;
     padding:8px 18px;
     border-radius:30px;
     font-size:13px;
@@ -1354,7 +1354,7 @@ width:100%;
     align-items:center;
     gap:10px;
     padding:12px 20px;
-    background:#FF9000;
+    background:#2F8D45;
     color: #FFFFFF;
     border:none;
     border-radius:12px;
@@ -1379,7 +1379,7 @@ width:100%;
 
 .empty-icon{
     font-size:48px;
-    color:#FF9000;
+    color:#2F8D45;
     margin-bottom:18px;
 }
 
@@ -1399,7 +1399,7 @@ width:100%;
     align-items:center;
     gap:10px;
     padding:12px 22px;
-    background:#FF9000;
+    background:#2F8D45;
     color: #FFFFFF;
     border:none;
     border-radius:12px;

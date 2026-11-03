@@ -173,7 +173,7 @@
 
 .order-status.pending{
     color:#8b6500;
-    background:#fff4d8;
+    background:#EAF4ED;
 }
 
 .order-status.confirmed{
@@ -355,9 +355,9 @@
     gap:5px;
     min-height:34px;
     padding:8px 11px;
-    border:1px solid #f28a13;
+    border:1px solid #2F8D45;
     border-radius:7px;
-    background:#fff7ec;
+    background:#EAF4ED;
     color:#a85f08;
     font:600 11px/1.2 "Poppins",sans-serif;
     cursor:pointer;
@@ -371,7 +371,7 @@
 }
 
 .order-invoice-button:hover:not(:disabled){
-    background:#f28a13;
+    background:#2F8D45;
     color:#fff;
 }
 
