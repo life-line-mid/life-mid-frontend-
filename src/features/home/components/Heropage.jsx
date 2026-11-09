@@ -8,6 +8,9 @@ import PromoBanners_Query from "../queries/PromoBanners_Query";
 import HeroSideBanner_Query from "../queries/HeroSideBanner_Query";
 import { resolveBannerList } from "./heroContent";
 
+const PROMO_BANNERS_ENABLED = false;
+const HERO_SIDE_BANNERS_ENABLED = false;
+
 const getHeroCopy = (...values) => {
   return values
     .map((value) => String(value ?? "").trim())
@@ -24,20 +27,24 @@ const Heropage = ({ heroBanners, promoBanners: providedPromoBanners, heroSideBan
   const heroLoading = !hasHeroBanners && heroQuery.isLoading;
 
   const hasPromoBanners = Array.isArray(providedPromoBanners);
-  const promoQuery = PromoBanners_Query({ enabled: !hasPromoBanners });
-  const promoBanners = resolveBannerList({
-    provided: hasPromoBanners ? providedPromoBanners : undefined,
-    fetched: promoQuery.data,
-  });
-  const promoLoading = !hasPromoBanners && promoQuery.isLoading;
+  const promoQuery = PromoBanners_Query({ enabled: PROMO_BANNERS_ENABLED && !hasPromoBanners });
+  const promoBanners = PROMO_BANNERS_ENABLED
+    ? resolveBannerList({
+      provided: hasPromoBanners ? providedPromoBanners : undefined,
+      fetched: promoQuery.data,
+    })
+    : [];
+  const promoLoading = PROMO_BANNERS_ENABLED && !hasPromoBanners && promoQuery.isLoading;
 
   const hasSideBanners = providedSideBanner !== undefined;
-  const sideQuery = HeroSideBanner_Query({ enabled: !hasSideBanners });
-  const sideBanners = resolveBannerList({
-    provided: hasSideBanners ? providedSideBanner : undefined,
-    fetched: sideQuery.data,
-  });
-  const sideLoading = !hasSideBanners && sideQuery.isLoading;
+  const sideQuery = HeroSideBanner_Query({ enabled: HERO_SIDE_BANNERS_ENABLED && !hasSideBanners });
+  const sideBanners = HERO_SIDE_BANNERS_ENABLED
+    ? resolveBannerList({
+      provided: hasSideBanners ? providedSideBanner : undefined,
+      fetched: sideQuery.data,
+    })
+    : [];
+  const sideLoading = HERO_SIDE_BANNERS_ENABLED && !hasSideBanners && sideQuery.isLoading;
 
   const [currentSlide, setCurrentSlide] = useState(0);
   const [currentSideBanner, setCurrentSideBanner] = useState(0);
@@ -144,7 +151,7 @@ const Heropage = ({ heroBanners, promoBanners: providedPromoBanners, heroSideBan
     <div className="hero-page-wrapper">
       
       {/* Top Promo Carousel (Visa Banner Equivalent) */}
-      {promoLoading ? (
+      {PROMO_BANNERS_ENABLED && (promoLoading ? (
         <div className="top-promo-carousel promo-loading-skeleton skeleton" role="status" aria-label="Loading promotional banner" />
       ) : promoBanners.length > 0 && <div className="top-promo-carousel" style={{ aspectRatio: promoRatio }}>
         <button className="promo-nav-btn left" onClick={prevPromo}>‹</button>
@@ -183,7 +190,7 @@ const Heropage = ({ heroBanners, promoBanners: providedPromoBanners, heroSideBan
         </div>
 
         <button className="promo-nav-btn right" onClick={nextPromo}>›</button>
-      </div>}
+      </div>)}
 
       <section
         className={`hero-split-layout ${hasHeroSlot && hasSideSlot ? "" : "single"}`}
@@ -270,7 +277,7 @@ const Heropage = ({ heroBanners, promoBanners: providedPromoBanners, heroSideBan
         </div>}
 
         {/* Rotating Side Banners (Right) */}
-        {sideLoading ? (
+        {HERO_SIDE_BANNERS_ENABLED && (sideLoading ? (
           <div className="hero-fixed-banner-section side-banner-loading-skeleton skeleton" role="status" aria-label="Loading side promotional banner" />
         ) : sideBanners.length > 0 && <div className="hero-fixed-banner-section" aria-label="Promotional side banners">
           <div className="fixed-banner-content">
@@ -338,7 +345,7 @@ const Heropage = ({ heroBanners, promoBanners: providedPromoBanners, heroSideBan
               ))}
             </div>
           )}
-        </div>}
+        </div>)}
 
       </section>
     </div>
