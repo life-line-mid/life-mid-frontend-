@@ -61,6 +61,8 @@ const resources = {
     "token-blacklist/blacklisted-tokens": { label: "Blacklisted Tokens", group: "Token Blacklist", fields: [], columns: [] },
 };
 
+const DISABLED_ADMIN_RESOURCES = new Set(["promo-banners", "hero-side-banners"]);
+
 const navGroups = [
     { title: "Workspace", items: [{ key: "overview", label: "Overview", icon: FiGrid }] },
     { title: "Orders", items: [{ key: "orders", label: "Orders", icon: FiShoppingBag }, { key: "order-items", label: "Order Items", icon: FiClipboard }] },
@@ -68,7 +70,7 @@ const navGroups = [
     { title: "Customers", items: ["users", "user-profiles", "addresses", "wishlists", "carts"].map((key) => ({ key, label: resources[key].label, icon: key === "users" ? FiUsers : FiArchive })) },
     { title: "Dashboard", items: ["coupons", "welcome-bonuses"].map((key) => ({ key, label: resources[key].label, icon: FiTag })) },
     { title: "Token Blacklist", items: [{ key: "token-blacklist/outstanding-tokens", label: "Outstanding Tokens", icon: FiShield }, { key: "token-blacklist/blacklisted-tokens", label: "Blacklisted Tokens", icon: FiArchive }] },
-    { title: "Marketing", items: ["hero-banners", "promo-banners", "hero-side-banners", "trust-benefits", "coupon-usages"].map((key) => ({ key, label: resources[key].label, icon: key === "trust-benefits" ? FiShield : key.includes("banner") ? FiImage : FiTag })) },
+    { title: "Marketing", items: ["hero-banners", "promo-banners", "hero-side-banners", "trust-benefits", "coupon-usages"].filter((key) => !DISABLED_ADMIN_RESOURCES.has(key)).map((key) => ({ key, label: resources[key].label, icon: key === "trust-benefits" ? FiShield : key.includes("banner") ? FiImage : FiTag })) },
     { title: "Product Tags", items: ["product-highlights", "product-messages"].map((key) => ({ key, label: key === "product-highlights" ? "Product Tags" : resources[key].label, icon: key === "product-highlights" ? FiActivity : FiTruck })) },
 ];
 
@@ -364,6 +366,7 @@ export default function OrderDashboard() {
     const isProductHighlightEditor = pathKey === "product-highlights" && (location.pathname.endsWith("/new") || isEditRoute);
     const isProductMessageEditor = pathKey === "product-messages" && (location.pathname.endsWith("/new") || isEditRoute);
     const isOrderEditor = pathKey === "orders" && Boolean(detailId) && isEditRoute;
+    const isDisabledAdminResource = DISABLED_ADMIN_RESOURCES.has(pathKey);
     const isGenericEditPage = Boolean(detailId) && isEditRoute && Boolean(resources[pathKey]) && !["products", "offers", "orders", "hero-banners", "promo-banners", "hero-side-banners", "coupons", "coupon-usages", "welcome-bonuses", "trust-benefits"].includes(pathKey);
     const isReadOnlyResourceView = Boolean(detailId) && !isEditRoute && pathKey !== "products" && pathKey !== "orders" && pathKey !== "welcome-bonuses" && Boolean(resources[pathKey]);
 
@@ -387,10 +390,16 @@ export default function OrderDashboard() {
         return () => window.clearTimeout(timer);
     }, [loadDashboard]);
 
+    useEffect(() => {
+        if (isDisabledAdminResource) navigate("/admin-dashboard", { replace: true });
+    }, [isDisabledAdminResource, navigate]);
+
     const go = (key) => { setSidebarOpen(false); navigate(key === "overview" ? "/admin-dashboard" : `/admin-dashboard/${key}`); };
     const logout = async () => { await logoutSession("admin"); navigate("/admin-dashboard/admin-login", { replace: true }); };
     const refreshDashboard = () => { if (refreshing) return; setRefreshing(true); window.setTimeout(() => window.location.reload(), 220); };
     const currentTitle = pathKey === "overview" ? "Overview" : resources[pathKey]?.label || "Admin Dashboard";
+
+    if (isDisabledAdminResource) return null;
 
     return <div className="admin-app">
         <aside className={`admin-sidebar ${sidebarOpen ? "open" : ""}`}>
