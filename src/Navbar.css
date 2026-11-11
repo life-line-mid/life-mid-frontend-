@@ -180,6 +180,14 @@ a {
     gap: 20px;
 }
 
+.desktop-action-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 36px;
+    min-height: 36px;
+}
+
 .search_wrapper {
     position: relative;
     display: flex;
@@ -719,7 +727,11 @@ a {
 }
 
 .mobile_bottom_item.active {
-    color: #2F8D45;
+    color: #246D36 !important;
+}
+
+.mobile_bottom_item.active .mobile_bottom_label {
+    color: #246D36 !important;
 }
 
 .mobile_bottom_icon {
@@ -885,6 +897,10 @@ a {
     .cart {
         display: none;
         gap: 0px;
+    }
+
+    .desktop-action-link {
+        display: none;
     }
 
     .search_main {

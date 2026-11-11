@@ -63,6 +63,7 @@
     display: inline-flex;
     align-items: center;
     gap: 10px;
+    min-height: 24px;
 }
 
 .footer-column a:focus-visible {

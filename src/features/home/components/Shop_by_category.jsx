@@ -2,7 +2,7 @@ import { useRef, useState, useEffect, useMemo } from "react";
 import ShopBy_categoryQuery from "../../shop_by_category/queries/ShopBy_categoryQuery";
 import "../styles/ShopBy-category.css";
 
-import specialOffer from '../../../assets/specialOffer-image.jpg';
+import specialOffer from '../../../assets/specialOffer-image-optimized.jpg';
 
 import { useNavigate } from "react-router-dom";
 import Offer_Query from "../../../hooks/offers/queries/Offer_Query";
@@ -363,6 +363,8 @@ function Shop_by_category({ categories: providedCategories }) {
                                 <img
                                     src={item.type === "offer" ? item.image : getImageUrl(item.image)}
                                     alt={item.name}
+                                    loading="lazy"
+                                    decoding="async"
                                 />
                             </div>
                             <p>{item.name}</p>
@@ -426,7 +428,7 @@ function Shop_by_category({ categories: providedCategories }) {
                                     >
 
                                         <div className="image-circle">
-                                            <img src={getImageUrl(item.image)} alt={item.name} />
+                                            <img src={getImageUrl(item.image)} alt={item.name} loading="lazy" decoding="async" />
                                         </div>
 
                                         <p>

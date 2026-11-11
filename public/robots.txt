@@ -1,0 +1,13 @@
+User-agent: *
+Allow: /
+Disallow: /admin-dashboard
+Disallow: /admin-login
+Disallow: /login
+Disallow: /signup
+Disallow: /profile
+Disallow: /checkout
+Disallow: /checkoutpage
+Disallow: /myorders
+Disallow: /wishlist
+
+Sitemap: https://lifelinemedsup.com/sitemap.xml

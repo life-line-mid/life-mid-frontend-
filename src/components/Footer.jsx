@@ -1,7 +1,7 @@
 import "./../Footer.css";
 
 // import life-line from './../assets/life-line.jpeg'
-import footerlogo from './../assets/footer-logo.png'
+import footerlogo from './../assets/lifeline-logo-optimized.png'
 import { Link } from 'react-router-dom';
 import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt, } from "react-icons/fa";
 import { CONTACT_EMAIL, WHATSAPP_DISPLAY_NUMBER, WHATSAPP_NUMBER } from "../config/contact";
@@ -19,7 +19,7 @@ function Footer() {
                 <div className="footer-container">
 
                     <div className="footer-column brand">
-                        <img src={footerlogo} alt="Life-line Medical Supplies" className="footer-logo" />
+                        <img src={footerlogo} alt="Life-line Medical Supplies" className="footer-logo" width="900" height="332" loading="lazy" decoding="async" />
                         <p>Medical supplies, made easier to source.</p>
                     </div>
 

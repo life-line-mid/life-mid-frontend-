@@ -219,6 +219,9 @@ const Heropage = ({ heroBanners, promoBanners: providedPromoBanners, heroSideBan
                 src={getImageUrl(slide.image || slide.banner_image || slide.image_url)}
                 alt={slide.title || slide.heading || "Featured collection"}
                 className={`hero-image ${loadedImages[`hero-${slide.id ?? index}`] ? "media-is-ready" : "media-is-loading"}`}
+                loading={index === currentSlide ? "eager" : "lazy"}
+                fetchPriority={index === currentSlide ? "high" : "low"}
+                decoding="async"
                 onLoad={(event) => markImageLoaded(`hero-${slide.id ?? index}`, event)}
               />
 

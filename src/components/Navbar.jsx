@@ -8,7 +8,7 @@ import { CgProfile } from "react-icons/cg";
 import { FaHeart } from "react-icons/fa6";
 import { FiGrid, FiHome, FiMenu } from "react-icons/fi";
 import { IoClose } from "react-icons/io5";
-import navbarlogo from './../assets/navbar-logo.png';
+import navbarlogo from './../assets/lifeline-logo-optimized.png';
 
 import WishlistQuery from "../features/wishlist/queries/WishlistQuery.jsx";
 import Offer_Query from "../hooks/offers/queries/Offer_Query.jsx";
@@ -173,7 +173,7 @@ const cartLength = cart.total_items ?? 0;
 
                     <div className="nav_main2">
                         <NavLink to='/' className="logo-link topbar-logo-link">
-                            <img src={navbarlogo} alt="Life-line Medical Supplies" className="navbar-logo topbar-logo" />
+                            <img src={navbarlogo} alt="Life-line Medical Supplies" className="navbar-logo topbar-logo" width="900" height="332" decoding="async" />
                         </NavLink>
 
                         <div className="link_flex">
@@ -227,6 +227,8 @@ const cartLength = cart.total_items ?? 0;
                                                             <img
                                                                 src={getImageUrl(activeSubcategory?.image || activeCategory?.image)}
                                                                 alt={activeSubcategory?.name || activeCategory?.name}
+                                                                loading="lazy"
+                                                                decoding="async"
                                                             />
                                                         </div>
                                                     )}
@@ -275,7 +277,7 @@ const cartLength = cart.total_items ?? 0;
                                 )}
 
 
-                                <NavLink to="/profile" className="mobile_bottom_item">
+                                <NavLink to="/profile" className="desktop-action-link" aria-label="Account">
                                     <div className="cart">
                                         <CgProfile size={22} />
                                     </div>
@@ -283,14 +285,14 @@ const cartLength = cart.total_items ?? 0;
 
                                 <div className="desktop-notification"><WelcomeBonusNotifications /></div>
 
-                                <NavLink to="/wishlist">
+                                <NavLink to="/wishlist" className="desktop-action-link" aria-label="Wishlist">
                                     <div className="cart">
                                         <FaHeart size={20} className="nav_icon" />
                                         <span>{wishLength}</span>
                                     </div>
                                 </NavLink>
 
-                                <NavLink to="/checkout">
+                                <NavLink to="/checkout" className="desktop-action-link" aria-label="Cart">
                                     <div className="cart">
                                         <FaShoppingBag size={20} className="nav_icon" />
                                         <span>{cartLength}</span>
@@ -336,7 +338,7 @@ const cartLength = cart.total_items ?? 0;
             <div id="mobile-navigation" className={`mobile_menu ${menuOpen ? "show" : ""}`}>
                 <div className="mobile_header">
                     <NavLink to='/' className="logo-link" style={{ marginTop: '5px' }}>
-                        <img src={navbarlogo} alt="Life-line Medical Supplies" className="navbar-logo" />
+                        <img src={navbarlogo} alt="Life-line Medical Supplies" className="navbar-logo" width="900" height="332" decoding="async" />
                     </NavLink>
                     <button type="button" className="mobile-close-button" onClick={() => setMenuOpen(false)} aria-label="Close navigation menu"><IoClose size={25} /></button>
                 </div>

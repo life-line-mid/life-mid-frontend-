@@ -24,7 +24,7 @@ import {
 } from "../../wishlist/api/Wishlisht_Api";
 import showToast from "../../../utils/toast";
 import { getImageUrl } from "../../../utils/imageUrl";
-import defaultImage from "../../../assets/image_not_available.png";
+import defaultImage from "../../../assets/image-not-available-optimized.png";
 import {
     getMostRecentCouponApplication,
     clearCouponApplication,

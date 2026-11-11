@@ -6,7 +6,7 @@ import { Wishlist_post, Wishlist_delete } from "../../wishlist/api/Wishlisht_Api
 import WishlistQuery from "../../wishlist/queries/WishlistQuery";
 import { getImageUrl } from "../../../utils/imageUrl";
 import showToast from "../../../utils/toast";
-import defaultImage from "../../../assets/image_not_available.png";
+import defaultImage from "../../../assets/image-not-available-optimized.png";
 import { hasAuthSession } from "../../auth/authUtils";
 import DirhamAmount from "../../../components/DirhamAmount";
 import ProductHighlightRail from "../../home/components/ProductHighlightRail";
@@ -215,7 +215,7 @@ function Product_card({ products = [], isLoading, error, page = 1, pageSize = 14
                         </div>
                     ) : null}
                     <div className="product-image-stage">
-                        <img src={image ? getImageUrl(image) : defaultImage} alt={product.name || "Product"} />
+                        <img src={image ? getImageUrl(image) : defaultImage} alt={product.name || "Product"} loading="lazy" decoding="async" />
                         <button
                             type="button"
                             className="quick-add-bar"

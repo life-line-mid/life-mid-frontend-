@@ -2,8 +2,6 @@
    MODERN, EDITORIAL, UNIQUE ABOUT PAGE UI
 ======================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap');
-
 .about-modern-wrapper {
     width: 100%;
     min-width: 0;
@@ -153,7 +151,7 @@
     content: "";
     position: absolute;
     top: 0; left: 0; right: 0; bottom: 0;
-    background-image: url("../../../assets/navbar-logo.png");
+    background-image: url("../../../assets/lifeline-logo-optimized.png");
     background-size: 250px;
     background-repeat: repeat;
     background-position: center;
@@ -259,7 +257,7 @@
     content: "";
     position: absolute;
     top: 0; left: 0; right: 0; bottom: 0;
-    background-image: url("../../../assets/navbar-logo.png");
+    background-image: url("../../../assets/lifeline-logo-optimized.png");
     background-size: 250px;
     background-repeat: repeat;
     background-position: center;

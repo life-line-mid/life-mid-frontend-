@@ -9,13 +9,19 @@
   <link
     rel="icon"
     type="image/png"
-    href="/life-line-favicon.png"
+    href="/lifeline-favicon-192.png"
   />
 
   <meta
     name="viewport"
     content="width=device-width, initial-scale=1.0"
   />
+
+  <meta name="theme-color" content="#15365B" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" />
 
 
   <!-- SEO TITLE -->
@@ -40,6 +46,8 @@
     content="index, follow"
   />
 
+  <link rel="canonical" href="https://lifelinemedsup.com/" />
+
 
   <!-- OPEN GRAPH -->
 
@@ -56,6 +64,21 @@
   <meta
     property="og:type"
     content="website"
+  />
+
+  <meta
+    property="og:url"
+    content="https://lifelinemedsup.com/"
+  />
+
+  <meta
+    property="og:image"
+    content="https://lifelinemedsup.com/lifeline-social-card.jpg"
+  />
+
+  <meta
+    property="og:image:alt"
+    content="Lifeline Medical Supplies logo"
   />
 
   <meta
@@ -80,6 +103,40 @@
     name="twitter:description"
     content="Medical supplies, made easier to source. Contact our team to enquire about availability and quotations."
   />
+
+  <meta
+    name="twitter:image"
+    content="https://lifelinemedsup.com/lifeline-social-card.jpg"
+  />
+
+  <meta
+    name="twitter:image:alt"
+    content="Lifeline Medical Supplies logo"
+  />
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://lifelinemedsup.com/#organization",
+          "name": "Lifeline Medical Supplies",
+          "url": "https://lifelinemedsup.com/",
+          "logo": "https://lifelinemedsup.com/lifeline-favicon-192.png"
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://lifelinemedsup.com/#website",
+          "url": "https://lifelinemedsup.com/",
+          "name": "Lifeline Medical Supplies",
+          "publisher": {
+            "@id": "https://lifelinemedsup.com/#organization"
+          }
+        }
+      ]
+    }
+  </script>
 
 </head>
 

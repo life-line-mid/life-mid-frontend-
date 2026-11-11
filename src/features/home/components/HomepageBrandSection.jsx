@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { getImageUrl } from "../../../utils/imageUrl";
-import defaultImage from "../../../assets/image_not_available.png";
+import defaultImage from "../../../assets/image-not-available-optimized.png";
 
 function HomepageBrandSection({ brands }) {
     const navigate = useNavigate();
@@ -35,7 +35,7 @@ function HomepageBrandSection({ brands }) {
                     >
                         <div className="brand-showcase-visual">
                             <span className="brand-showcase-orb" aria-hidden="true" />
-                            <img src={getImageUrl(brand.logo) || defaultImage} alt="" />
+                            <img src={getImageUrl(brand.logo) || defaultImage} alt="" loading="lazy" decoding="async" />
                             <span className="brand-showcase-product-count">{productCount ? `${productCount} ${productCount === 1 ? "product" : "products"}` : "Explore collection"}</span>
                         </div>
                         <div className="brand-showcase-card-content">

@@ -4,7 +4,7 @@ import { FiArrowLeft } from "react-icons/fi";
 import { getErrorMessage, getResource, listResource } from "../services/adminApi";
 import { EmptyState, LoadingState } from "../components/AdminPrimitives";
 import { getImageUrl } from "../../../utils/imageUrl";
-import defaultImage from "../../../assets/image_not_available.png";
+import defaultImage from "../../../assets/image-not-available-optimized.png";
 import DirhamAmount from "../../../components/DirhamAmount";
 import "../styles/ProductEditor.css";
 

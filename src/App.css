@@ -41,3 +41,11 @@ body{
   width: 82%;
   height: 18px;
 }
+
+.route-loading {
+  min-height: 35vh;
+  display: grid;
+  place-items: center;
+  color: var(--lifeline-navy, #15365b);
+  font-weight: 600;
+}

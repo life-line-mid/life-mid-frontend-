@@ -1,0 +1,14 @@
+# Lifeline Medical Supplies
+
+Lifeline Medical Supplies is a medical-supplies storefront that helps organisations source dependable healthcare supplies with clear product information and practical service.
+
+## Public pages
+
+- Home: https://lifelinemedsup.com/
+- Shop: https://lifelinemedsup.com/shop
+- Products: https://lifelinemedsup.com/products
+- Offers: https://lifelinemedsup.com/offers
+- About: https://lifelinemedsup.com/about
+- Contact: https://lifelinemedsup.com/contact
+
+For availability and quotations, visitors should use the contact page or the product enquiry flow. Do not infer prices, stock, certifications, delivery terms, or medical claims that are not displayed in the product data.

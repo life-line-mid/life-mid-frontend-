@@ -9,7 +9,7 @@ import Homepage_Query from "./queries/Homepage_Query";
 import Product_Query from "../sale/queries/Product_Query";
 import Offer_poster from "../../hooks/offers/page/Offer_poster";
 import ContactUs from "../../components/Contact";
-import brandLogo from "../../assets/navbar-logo.png";
+import brandLogo from "../../assets/lifeline-logo-optimized.png";
 
 const asArray = (value) => {
     if (Array.isArray(value)) return value;

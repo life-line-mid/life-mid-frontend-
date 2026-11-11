@@ -7,6 +7,7 @@
     --brand-navy: #15365B;
     --brand-green: #2F8D45;
     --brand-green-dark: #246D36;
+    --brand-green-contrast: #246D36;
     --brand-slate: #53616D;
     --brand-soft: #F3F6F8;
     --brand-line: #D9E2E8;
@@ -150,7 +151,7 @@ a.nav_link.active,
 .footer-column a:hover,
 .social-icons,
 .social-icons a {
-    color: var(--brand-green);
+    color: var(--brand-green-contrast);
 }
 
 .footer-column a:focus-visible {
@@ -179,7 +180,7 @@ a.nav_link.active,
 .heritage-tag,
 .brand-showcase-eyebrow,
 .brand-showcase-card-content > span:first-child {
-    color: var(--brand-green);
+    color: var(--brand-green-contrast);
 }
 
 .homepage-benefit {
@@ -234,7 +235,7 @@ a.nav_link.active,
 .info-box h4,
 .value-card h3,
 .quote-author {
-    color: var(--brand-green);
+    color: var(--brand-green-contrast);
 }
 
 .hero-display,
@@ -260,7 +261,7 @@ a.nav_link.active,
 
 .hero-modern-btn,
 .whatsapp-btn {
-    background: var(--brand-green);
+    background: var(--brand-green-contrast);
 }
 
 .hero-modern-btn:hover,
@@ -273,6 +274,10 @@ a.nav_link.active,
 .contact-form {
     background: var(--brand-soft);
     border: 1px solid var(--brand-line);
+}
+
+.mobile_bottom_item.active {
+    color: var(--brand-green-contrast);
 }
 
 .about-modern-quote {

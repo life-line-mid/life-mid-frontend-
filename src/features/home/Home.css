@@ -726,7 +726,7 @@
 
 .homepage-benefit p {
     margin: 0;
-    color: #6b8490;
+    color: #53616d;
     font-size: .88rem;
     line-height: 1.65;
     overflow-wrap: anywhere;
@@ -768,7 +768,7 @@
 
 .homepage-state p {
     margin: 0;
-    color: #6b8490;
+    color: #53616d;
 }
 
 .homepage-state button {
@@ -1222,7 +1222,7 @@
 .section-heritage-text p{
     font-size:1.1rem;
     line-height:1.9;
-    color: #6B8490;
+    color: #53616D;
     margin-bottom: 20px;
     overflow-wrap: anywhere;
 }
