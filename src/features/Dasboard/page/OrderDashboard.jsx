@@ -18,7 +18,7 @@ import CouponUsageEditor from "./CouponUsageEditor";
 import WelcomeBonusEditor from "./WelcomeBonusEditor";
 import WelcomeBonusPage from "./WelcomeBonusPage";
 import TokenBlacklistPage from "./TokenBlacklistPage";
-import navbarLogo from "../../../assets/lifeline-logo-optimized.png";
+import navbarLogo from "../../../assets/lifeline-logo-optimized.webp";
 import { getImageUrl } from "../../../utils/imageUrl";
 import { logoutSession } from "../../../lib/ApiClient";
 import { getPasswordPolicyError } from "../../auth/passwordPolicy";

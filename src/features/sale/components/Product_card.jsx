@@ -6,7 +6,7 @@ import { Wishlist_post, Wishlist_delete } from "../../wishlist/api/Wishlisht_Api
 import WishlistQuery from "../../wishlist/queries/WishlistQuery";
 import { getImageUrl } from "../../../utils/imageUrl";
 import showToast from "../../../utils/toast";
-import defaultImage from "../../../assets/image-not-available-optimized.png";
+import defaultImage from "../../../assets/image-not-available-optimized.webp";
 import { hasAuthSession } from "../../auth/authUtils";
 import DirhamAmount from "../../../components/DirhamAmount";
 import ProductHighlightRail from "../../home/components/ProductHighlightRail";

@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { getImageUrl } from "../../../utils/imageUrl";
-import defaultImage from "../../../assets/image-not-available-optimized.png";
+import defaultImage from "../../../assets/image-not-available-optimized.webp";
 
 function HomepageBrandSection({ brands }) {
     const navigate = useNavigate();

@@ -4,7 +4,7 @@ import { useLocation } from "react-router-dom";
 const SITE_URL = "https://lifelinemedsup.com";
 const DEFAULT_TITLE = "Lifeline Medical Supplies | Trust. Quality. Reliable supply.";
 const DEFAULT_DESCRIPTION = "Medical supplies, made easier to source. Contact Lifeline Medical Supplies for product availability and quotations.";
-const SHARE_IMAGE = `${SITE_URL}/lifeline-social-card.jpg`;
+const SHARE_IMAGE = `${SITE_URL}/lifeline-social-card.webp`;
 
 const routeMeta = [
     { match: /^\/$/, title: DEFAULT_TITLE, description: DEFAULT_DESCRIPTION },

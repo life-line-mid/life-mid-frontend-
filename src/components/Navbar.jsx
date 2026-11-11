@@ -8,7 +8,7 @@ import { CgProfile } from "react-icons/cg";
 import { FaHeart } from "react-icons/fa6";
 import { FiGrid, FiHome, FiMenu } from "react-icons/fi";
 import { IoClose } from "react-icons/io5";
-import navbarlogo from './../assets/lifeline-logo-optimized.png';
+import navbarlogo from './../assets/lifeline-logo-optimized.webp';
 
 import WishlistQuery from "../features/wishlist/queries/WishlistQuery.jsx";
 import Offer_Query from "../hooks/offers/queries/Offer_Query.jsx";

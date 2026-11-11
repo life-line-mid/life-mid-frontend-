@@ -24,7 +24,7 @@ import {
 } from "../../wishlist/api/Wishlisht_Api";
 import showToast from "../../../utils/toast";
 import { getImageUrl } from "../../../utils/imageUrl";
-import defaultImage from "../../../assets/image-not-available-optimized.png";
+import defaultImage from "../../../assets/image-not-available-optimized.webp";
 import {
     getMostRecentCouponApplication,
     clearCouponApplication,
@@ -631,7 +631,7 @@ function Single_product() {
         const selectedImage = activeImage
             || selectedVariant.images?.find((image) => image.is_primary)?.image
             || selectedVariant.images?.[0]?.image;
-        const imageUrl = selectedImage ? getImageUrl(selectedImage) : "/life-line.jpeg";
+        const imageUrl = selectedImage ? getImageUrl(selectedImage) : "/life-line.webp";
         const description = (descriptionText || `Shop ${productHeading} at LIFE-LINE.`)
             .replace(/\s+/g, " ")
             .slice(0, 200);

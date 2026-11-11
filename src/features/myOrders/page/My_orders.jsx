@@ -7,6 +7,7 @@ import DirhamAmount from "../../../components/DirhamAmount";
 import { getProductDetailsPath } from "../../../utils/productUrl";
 import showToast from "../../../utils/toast";
 import { FiDownload } from "react-icons/fi";
+import defaultProductImage from "../../../assets/image-not-available-optimized.webp";
 
 const formatOrderNumber = (id) => `LL26/${String(id).padStart(4, "0")}`;
 const isPaidOrder = (order) => String(order?.payment_status || "").toLowerCase() === "paid";
@@ -328,7 +329,7 @@ const MyOrders = () => {
                                         src={
                                             item.product_image
                                                 ? getImageUrl(item.product_image)
-                                                : "/images/no-image.png"
+                                                : defaultProductImage
                                         }
                                         alt={item.product_name || "Product"}
                                     />

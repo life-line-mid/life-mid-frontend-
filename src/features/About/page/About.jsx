@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import '../styles/About.css';
 
-import brandLogo from "../../../assets/lifeline-logo-optimized.png";
+import brandLogo from "../../../assets/lifeline-logo-optimized.webp";
 
 import { useNavigate } from "react-router-dom";
 

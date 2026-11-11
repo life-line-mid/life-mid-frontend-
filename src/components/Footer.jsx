@@ -1,7 +1,6 @@
 import "./../Footer.css";
 
-// import life-line from './../assets/life-line.jpeg'
-import footerlogo from './../assets/lifeline-logo-optimized.png'
+import footerlogo from './../assets/lifeline-logo-optimized.webp'
 import { Link } from 'react-router-dom';
 import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt, } from "react-icons/fa";
 import { CONTACT_EMAIL, WHATSAPP_DISPLAY_NUMBER, WHATSAPP_NUMBER } from "../config/contact";

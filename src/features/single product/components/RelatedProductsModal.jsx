@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { getImageUrl } from "../../../utils/imageUrl";
-import defaultImage from "../../../assets/image-not-available-optimized.png";
+import defaultImage from "../../../assets/image-not-available-optimized.webp";
 import DirhamAmount from "../../../components/DirhamAmount";
 import "../style/RelatedProductsModal.css";
 

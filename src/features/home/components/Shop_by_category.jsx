@@ -2,7 +2,7 @@ import { useRef, useState, useEffect, useMemo } from "react";
 import ShopBy_categoryQuery from "../../shop_by_category/queries/ShopBy_categoryQuery";
 import "../styles/ShopBy-category.css";
 
-import specialOffer from '../../../assets/specialOffer-image-optimized.jpg';
+import specialOffer from '../../../assets/specialOffer-image-optimized.webp';
 
 import { useNavigate } from "react-router-dom";
 import Offer_Query from "../../../hooks/offers/queries/Offer_Query";
