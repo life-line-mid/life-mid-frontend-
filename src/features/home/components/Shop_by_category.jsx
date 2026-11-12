@@ -27,8 +27,6 @@ function Shop_by_category({ categories: providedCategories }) {
     const categorySliderRef = useRef(null);
     const subCategorySliderRef = useRef(null);
     const categoryScrollCheckFrame = useRef(null);
-    const categoryAutoPauseUntil = useRef(0);
-    const categoryLoopDistanceRef = useRef(0);
 
     const [selectedCategory, setSelectedCategory] = useState(null);
     const [closing, setClosing] = useState(false);
@@ -142,101 +140,20 @@ function Shop_by_category({ categories: providedCategories }) {
         ? [{ id: `offer-${activeOffer.id}`, name: "OFFERS", image: specialOffer, type: "offer" }, ...categories]
         : categories;
 
-    // The category rail is a two-row grid. Keep each repeated track an even
-    // number of cards so the second copy always starts on a fresh column;
-    // otherwise odd item counts make the loop distance jump backwards.
-    const categoryLoopLength = categoryItems.length > 1
-        ? categoryItems.length + (categoryItems.length % 2)
-        : categoryItems.length;
-    const categoryLoopBase = categoryItems.length > 1 && categoryItems.length % 2
-        ? [...categoryItems, { id: `category-spacer-${categoryItems.length}`, type: "spacer" }]
-        : categoryItems;
-    const categoryLoopItems = categoryItems.length > 1
-        ? [...categoryLoopBase, ...categoryLoopBase]
-        : categoryItems;
-
-
-
     useEffect(() => {
 
         checkCategoryScroll();
         const category =
             categorySliderRef.current;
         category?.addEventListener("scroll", scheduleCategoryScrollCheck, { passive: true });
-        const pauseAutoScroll = () => {
-            categoryAutoPauseUntil.current = performance.now() + 900;
-        };
-        category?.addEventListener("pointerdown", pauseAutoScroll, { passive: true });
-        category?.addEventListener("touchstart", pauseAutoScroll, { passive: true });
-        category?.addEventListener("wheel", pauseAutoScroll, { passive: true });
         return () => {
             category?.removeEventListener("scroll", scheduleCategoryScrollCheck);
-            category?.removeEventListener("pointerdown", pauseAutoScroll);
-            category?.removeEventListener("touchstart", pauseAutoScroll);
-            category?.removeEventListener("wheel", pauseAutoScroll);
             if (categoryScrollCheckFrame.current !== null) {
                 window.cancelAnimationFrame(categoryScrollCheckFrame.current);
                 categoryScrollCheckFrame.current = null;
             }
         }
     }, [categories]);
-
-    useEffect(() => {
-        const container = categorySliderRef.current;
-        if (!container || categoryLoopLength < 2) return undefined;
-
-        const firstItem = container.children[0];
-        const repeatedFirstItem = container.children[categoryLoopLength];
-        if (!firstItem || !repeatedFirstItem) return undefined;
-
-        let animationFrame;
-        let previousTime;
-        let scrollPosition = container.scrollLeft;
-        const pixelsPerSecond = 36;
-
-        const measureLoopDistance = () => {
-            const distance = repeatedFirstItem.offsetLeft - firstItem.offsetLeft;
-            if (distance > 0) categoryLoopDistanceRef.current = distance;
-        };
-
-        measureLoopDistance();
-        if (categoryLoopDistanceRef.current <= 0) return undefined;
-
-        const resizeObserver = typeof ResizeObserver === "undefined"
-            ? null
-            : new ResizeObserver(() => {
-                measureLoopDistance();
-                scrollPosition = container.scrollLeft;
-            });
-        resizeObserver?.observe(container);
-
-        const moveCategories = (time) => {
-            if (previousTime === undefined) previousTime = time;
-            const elapsed = Math.min(time - previousTime, 50);
-            previousTime = time;
-
-            const loopDistance = categoryLoopDistanceRef.current;
-
-            if (time < categoryAutoPauseUntil.current) {
-                scrollPosition = container.scrollLeft;
-            } else {
-                const nextPosition = scrollPosition + (pixelsPerSecond * elapsed) / 1000;
-                scrollPosition = nextPosition >= loopDistance
-                    ? nextPosition % loopDistance
-                    : nextPosition;
-                container.scrollLeft = scrollPosition;
-            }
-
-            animationFrame = window.requestAnimationFrame(moveCategories);
-        };
-
-        animationFrame = window.requestAnimationFrame(moveCategories);
-        return () => {
-            window.cancelAnimationFrame(animationFrame);
-            resizeObserver?.disconnect();
-            categoryLoopDistanceRef.current = 0;
-        };
-    }, [categoryLoopLength]);
 
 
     useEffect(() => {
@@ -261,7 +178,6 @@ function Shop_by_category({ categories: providedCategories }) {
         const container =
             categorySliderRef.current;
         if (!container) return;
-        categoryAutoPauseUntil.current = performance.now() + 1200;
         container.scrollBy({
             left:
                 direction === "right"
@@ -351,11 +267,9 @@ function Shop_by_category({ categories: providedCategories }) {
                     ref={categorySliderRef}
                 >
 
-                    {categoryLoopItems.map((item, index) => item.type === "spacer" ? (
-                        <div className="category-card category-card-spacer" key={`${item.id}-${index}`} aria-hidden="true" />
-                    ) : (
+                    {categoryItems.map((item) => (
                         <div
-                            key={`${item.id}-${index}`}
+                            key={item.id}
                             className={`category-card ${selectedCategory?.id === item.id ? "active-category" : ""}`}
                             onClick={() => selectCategory(item)}
                         >
