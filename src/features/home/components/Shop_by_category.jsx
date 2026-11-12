@@ -27,6 +27,8 @@ function Shop_by_category({ categories: providedCategories }) {
     const categorySliderRef = useRef(null);
     const subCategorySliderRef = useRef(null);
     const categoryScrollCheckFrame = useRef(null);
+    const categoryAutoPauseUntil = useRef(0);
+    const categoryAutoDirection = useRef(1);
 
     const [selectedCategory, setSelectedCategory] = useState(null);
     const [closing, setClosing] = useState(false);
@@ -153,7 +155,79 @@ function Shop_by_category({ categories: providedCategories }) {
                 categoryScrollCheckFrame.current = null;
             }
         }
-    }, [categories]);
+    }, [categories, activeOffer?.id]);
+
+    useEffect(() => {
+        const container = categorySliderRef.current;
+        if (!container || categoryItems.length < 2) return undefined;
+
+        let animationFrame = null;
+        let previousTime;
+        let scrollPosition = container.scrollLeft;
+        const pixelsPerSecond = 24;
+
+        const pauseAutoScroll = () => {
+            categoryAutoPauseUntil.current = performance.now() + 1400;
+        };
+
+        const scheduleAutoScroll = () => {
+            if (animationFrame !== null) return;
+            animationFrame = window.requestAnimationFrame(moveCategories);
+        };
+
+        const moveCategories = (time) => {
+            animationFrame = null;
+            const maxScroll = container.scrollWidth - container.clientWidth;
+
+            if (maxScroll <= 5) return;
+
+            if (previousTime === undefined) previousTime = time;
+            const elapsed = Math.min(time - previousTime, 50);
+            previousTime = time;
+
+            if (time < categoryAutoPauseUntil.current) {
+                scrollPosition = container.scrollLeft;
+            } else {
+                const nextPosition = scrollPosition
+                    + (categoryAutoDirection.current * pixelsPerSecond * elapsed) / 1000;
+
+                if (nextPosition >= maxScroll) {
+                    scrollPosition = maxScroll;
+                    categoryAutoDirection.current = -1;
+                } else if (nextPosition <= 0) {
+                    scrollPosition = 0;
+                    categoryAutoDirection.current = 1;
+                } else {
+                    scrollPosition = nextPosition;
+                }
+
+                container.scrollLeft = scrollPosition;
+            }
+
+            scheduleAutoScroll();
+        };
+
+        container.addEventListener("pointerdown", pauseAutoScroll, { passive: true });
+        container.addEventListener("touchstart", pauseAutoScroll, { passive: true });
+        container.addEventListener("wheel", pauseAutoScroll, { passive: true });
+
+        const resizeObserver = typeof ResizeObserver === "undefined"
+            ? null
+            : new ResizeObserver(() => {
+                previousTime = undefined;
+                scheduleAutoScroll();
+            });
+        resizeObserver?.observe(container);
+        scheduleAutoScroll();
+
+        return () => {
+            container.removeEventListener("pointerdown", pauseAutoScroll);
+            container.removeEventListener("touchstart", pauseAutoScroll);
+            container.removeEventListener("wheel", pauseAutoScroll);
+            resizeObserver?.disconnect();
+            if (animationFrame !== null) window.cancelAnimationFrame(animationFrame);
+        };
+    }, [categoryItems.length]);
 
 
     useEffect(() => {
@@ -178,6 +252,7 @@ function Shop_by_category({ categories: providedCategories }) {
         const container =
             categorySliderRef.current;
         if (!container) return;
+        categoryAutoPauseUntil.current = performance.now() + 1400;
         container.scrollBy({
             left:
                 direction === "right"
