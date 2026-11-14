@@ -447,6 +447,24 @@
         gap: 6px;
     }
 
+    /* Keep mobile columns on one readable vertical axis. */
+    .footer-column:nth-child(3) {
+        text-align: left;
+    }
+
+    .footer-column:nth-child(3) ul li {
+        justify-content: flex-start;
+    }
+
+    .footer-column:nth-child(4) {
+        grid-column: 1 / -1;
+        text-align: left;
+    }
+
+    .footer-column:nth-child(4) .contact li {
+        justify-content: flex-start;
+    }
+
     .footer-column.payment {
         padding-top: 2px;
     }
