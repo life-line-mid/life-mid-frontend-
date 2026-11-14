@@ -300,3 +300,240 @@
         font-size: 11px;
     }
 }
+
+/* --------------------------------------------------------------------------
+   Responsive footer layout
+   Keep the footer centered on wide screens and predictable at narrow widths.
+   These rules intentionally come last so they normalize the older responsive
+   rules above without changing footer content or navigation behavior.
+   -------------------------------------------------------------------------- */
+
+.footer-container {
+    width: min(100%, 1440px);
+    margin-inline: auto;
+    grid-template-columns: minmax(220px, 1.35fr) repeat(3, minmax(150px, 1fr)) minmax(180px, 1.05fr);
+    align-items: start;
+}
+
+.footer-column {
+    min-width: 0;
+}
+
+.footer {
+    padding: clamp(32px, 4vw, 64px) clamp(16px, 5vw, 112px);
+}
+
+.footer-logo {
+    width: min(210px, 100%);
+    aspect-ratio: 900 / 332;
+    object-fit: contain;
+    object-position: left center;
+}
+
+.brand p {
+    max-width: 28ch;
+}
+
+.footer-column h3 {
+    line-height: 1.2;
+}
+
+.footer-column ul li {
+    min-width: 0;
+    align-items: flex-start;
+    line-height: 1.45;
+}
+
+.footer-column a {
+    min-width: 0;
+    overflow-wrap: anywhere;
+}
+
+.contact li > svg,
+.contact li > a > svg {
+    flex: 0 0 auto;
+    margin-top: 0.2em;
+}
+
+.payment-options {
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.payment-options span {
+    line-height: 1.2;
+}
+
+.copyright {
+    min-height: 40px;
+    height: auto;
+    padding: 10px 16px;
+    text-align: center;
+    line-height: 1.4;
+}
+
+@media (max-width: 1200px) {
+    .footer-container {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .footer-column.brand {
+        grid-column: span 2;
+    }
+
+    .footer-column.payment {
+        grid-column: 1 / -1;
+    }
+}
+
+@media (max-width: 992px) {
+    .footer {
+        padding: 40px clamp(20px, 5vw, 48px);
+    }
+
+    .footer-container {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 28px 24px;
+    }
+
+    .footer-column.brand,
+    .footer-column.payment {
+        grid-column: 1 / -1;
+        text-align: center;
+    }
+
+    .footer-column.brand {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-logo {
+        width: min(220px, 80vw);
+        object-position: center;
+    }
+
+    .brand p {
+        max-width: 36ch;
+    }
+
+    .footer-column.payment .payment-options {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .footer {
+        /* Clear the fixed mobile navigation bar. */
+        padding: 24px 14px calc(18px + 70px);
+    }
+
+    .footer-container {
+        gap: 20px 14px;
+    }
+
+    .footer-column h3 {
+        margin-bottom: 9px;
+        font-size: 13px;
+    }
+
+    .footer-column ul li {
+        margin-bottom: 7px;
+        font-size: 12px;
+        gap: 6px;
+    }
+
+    .footer-column a {
+        gap: 6px;
+    }
+
+    .footer-column.payment {
+        padding-top: 2px;
+    }
+
+    .footer-column.payment .payment-options {
+        justify-content: center;
+    }
+
+    .payment-options span {
+        padding: 5px 9px;
+        font-size: 11px;
+    }
+
+    .copyright {
+        margin-bottom: 70px;
+    }
+}
+
+@media (max-width: 560px) {
+    /* Give the contact details a full row before going single-column. */
+    .footer-column:nth-child(4) {
+        grid-column: 1 / -1;
+    }
+
+    .contact li {
+        width: min(100%, 32rem);
+    }
+}
+
+@media (max-width: 360px) {
+    .footer {
+        padding: 20px 12px calc(14px + 70px);
+    }
+
+    .footer-container {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 20px;
+    }
+
+    .footer-column,
+    .footer-column.brand,
+    .footer-column.payment,
+    .footer-column:nth-child(4) {
+        grid-column: 1;
+        text-align: center;
+    }
+
+    .footer-column:nth-child(3),
+    .footer-column:nth-child(5),
+    .footer-column:nth-child(3) ul li,
+    .footer-column:nth-child(5) ul li {
+        text-align: center;
+        justify-content: center;
+    }
+
+    .footer-column:not(.brand):not(.payment) {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-column ul,
+    .contact {
+        width: 100%;
+    }
+
+    .footer-column ul li,
+    .footer-column a,
+    .contact li {
+        justify-content: center;
+    }
+
+    .footer-logo {
+        width: min(160px, 70vw);
+    }
+
+    .footer-column h3 {
+        font-size: 12px;
+    }
+
+    .footer-column ul li {
+        font-size: 11px;
+        margin-bottom: 6px;
+    }
+
+    .copyright {
+        padding: 10px 8px;
+        font-size: 11px;
+    }
+}
