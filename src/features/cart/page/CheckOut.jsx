@@ -8,7 +8,6 @@ import { clearCouponApplication, isInactiveCouponError } from "../../coupon/coup
 import DirhamAmount from "../../../components/DirhamAmount";
 import {
     buildWhatsAppCheckoutUrl,
-    CHECKOUT_PAYMENT_METHOD,
     CHECKOUT_PAYMENT_OPTIONS,
 } from "../checkoutOptions";
 
@@ -129,33 +128,11 @@ const Checkout = () => {
                 return;
             }
 
-            // A failed checkout attempt must never reuse a key: each button
-            // click represents a new user-initiated checkout operation.
-            const idempotencyKey = crypto.randomUUID();
-
-            const response = await client.post(
-                "place-order/",
-                {
-                    address: selectedAddress,
-                    payment_method: CHECKOUT_PAYMENT_METHOD,
-                },
-                {
-                    timeout: ORDER_REQUEST_TIMEOUT,
-                    headers: { "Idempotency-Key": idempotencyKey }
-                }
-            );
-
-            const orderId = response.data?.order_id;
-            if (!orderId) {
-                throw new Error("The order could not be created.");
-            }
-
             const selectedAddressDetails = addresses.find((address) => address.id === selectedAddress);
             const whatsappUrl = buildWhatsAppCheckoutUrl({
-                orderId,
                 address: selectedAddressDetails,
                 items: latestCart.items || [],
-                total: response.data?.grand_total || latestCart.total || cartSummary.total,
+                total: latestCart.total || cartSummary.total,
             });
 
             window.location.assign(whatsappUrl);

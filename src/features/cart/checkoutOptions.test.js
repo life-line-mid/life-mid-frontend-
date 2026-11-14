@@ -52,4 +52,16 @@ describe("WhatsApp-only checkout", () => {
         expect(message).toContain("AED 25.50");
         expect(decodeURIComponent(url)).toContain("Nitrile Gloves");
     });
+
+    it("builds a direct WhatsApp request without inventing an order number", () => {
+        const url = buildWhatsAppCheckoutUrl({
+            address: { full_name: "Azhar", city: "Dubai" },
+            items: [{ product_name: "Nitrile Gloves", quantity: 1, total_price: "10" }],
+            total: "10",
+        });
+
+        const message = decodeURIComponent(url);
+        expect(message).toContain("I would like to place this order via WhatsApp.");
+        expect(message).not.toContain("ORD-000000");
+    });
 });

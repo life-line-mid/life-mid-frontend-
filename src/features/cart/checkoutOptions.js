@@ -27,7 +27,9 @@ export function buildWhatsAppCheckoutMessage({ orderId, address = {}, items = []
     return [
         "Hello Team,",
         "",
-        `I placed an order via WhatsApp. Order: ORD-${String(orderId).padStart(6, "0")}`,
+        orderId
+            ? `I placed an order via WhatsApp. Order: ORD-${String(orderId).padStart(6, "0")}`
+            : "I would like to place this order via WhatsApp.",
         "",
         "Items:",
         ...itemLines,
