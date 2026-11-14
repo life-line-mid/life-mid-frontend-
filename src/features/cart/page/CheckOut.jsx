@@ -6,8 +6,11 @@ import { getImageUrl } from "../../../utils/imageUrl";
 import showToast from "../../../utils/toast";
 import { clearCouponApplication, isInactiveCouponError } from "../../coupon/couponState";
 import DirhamAmount from "../../../components/DirhamAmount";
-import { WHATSAPP_NUMBER } from "../../../config/contact";
-import { getSafeCheckoutUrl } from "../../../lib/checkoutUrl";
+import {
+    buildWhatsAppCheckoutUrl,
+    CHECKOUT_PAYMENT_METHOD,
+    CHECKOUT_PAYMENT_OPTIONS,
+} from "../checkoutOptions";
 
 const Checkout = () => {
 
@@ -28,8 +31,6 @@ const Checkout = () => {
     const [loading, setLoading] = useState(true);
     const [processing, setProcessing] = useState(false);
     const [checkoutError, setCheckoutError] = useState("");
-    const [paymentMethod, setPaymentMethod] = useState("STRIPE");
-
     const fetchAddresses = useCallback(async () => {
 
         try {
@@ -96,33 +97,6 @@ const Checkout = () => {
         loadCheckout();
     }, [fetchAddresses, fetchCart]);
 
-    const buildWhatsAppMessage = (orderId, address, items, total) => {
-        const itemLines = items.map((item) => {
-            const variant = item.variant_size !== null && item.size
-                ? `, ${item.unit_type || "Option"}: ${item.size}`
-                : "";
-            return `- ${item.product_name}${variant} x ${item.quantity}`;
-        });
-
-        return [
-            "Hello Team,",
-            "",
-            `I placed an order via WhatsApp. Order: ORD-${String(orderId).padStart(6, "0")}`,
-            "",
-            "Items:",
-            ...itemLines,
-            "",
-            `Total: AED ${Number(total || 0).toFixed(2)}`,
-            "",
-            "Delivery address:",
-            address.full_name,
-            address.phone,
-            address.address_line,
-            `${address.city}${address.emirate ? `, ${address.emirate}` : ""}, ${address.postal_code}`,
-            address.country,
-        ].join("\n");
-    };
-
     const placeOrder = async () => {
 
         if (processing) return;
@@ -134,10 +108,6 @@ const Checkout = () => {
             return;
 
         }
-
-        const whatsappWindow = paymentMethod === "WHATSAPP"
-            ? window.open("about:blank", "_blank")
-            : null;
 
         try {
 
@@ -163,28 +133,11 @@ const Checkout = () => {
             // click represents a new user-initiated checkout operation.
             const idempotencyKey = crypto.randomUUID();
 
-            if (paymentMethod === "STRIPE") {
-                const response = await client.post(
-                    "payment/create-checkout-session/",
-                    { address: selectedAddress },
-                    {
-                        timeout: ORDER_REQUEST_TIMEOUT,
-                        headers: { "Idempotency-Key": idempotencyKey },
-                    },
-                );
-                const checkoutUrl = getSafeCheckoutUrl(response.data?.checkout_url);
-
-                // Stripe hosts the payment page. The order is created by the
-                // verified success/webhook flow after payment succeeds.
-                window.location.assign(checkoutUrl);
-                return;
-            }
-
             const response = await client.post(
                 "place-order/",
                 {
                     address: selectedAddress,
-                    payment_method: paymentMethod,
+                    payment_method: CHECKOUT_PAYMENT_METHOD,
                 },
                 {
                     timeout: ORDER_REQUEST_TIMEOUT,
@@ -197,30 +150,18 @@ const Checkout = () => {
                 throw new Error("The order could not be created.");
             }
 
-            if (paymentMethod === "WHATSAPP") {
-                const selectedAddressDetails = addresses.find((address) => address.id === selectedAddress);
-                const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
-                    buildWhatsAppMessage(orderId, selectedAddressDetails, cartItems, response.data?.grand_total || cartSummary.total)
-                )}`;
+            const selectedAddressDetails = addresses.find((address) => address.id === selectedAddress);
+            const whatsappUrl = buildWhatsAppCheckoutUrl({
+                orderId,
+                address: selectedAddressDetails,
+                items: latestCart.items || [],
+                total: response.data?.grand_total || latestCart.total || cartSummary.total,
+            });
 
-                if (whatsappWindow && !whatsappWindow.closed) {
-                    whatsappWindow.location.href = whatsappUrl;
-                    whatsappWindow.opener = null;
-                } else {
-                    window.location.href = whatsappUrl;
-                    return;
-                }
-
-                showToast.success("Order placed. WhatsApp is ready with your order details.");
-            } else {
-                showToast.success("COD order placed successfully.");
-            }
-
-            navigate("/myorders");
+            window.location.assign(whatsappUrl);
 
         } catch (error) {
 
-            if (whatsappWindow && !whatsappWindow.closed) whatsappWindow.close();
             console.log(error);
             if (isInactiveCouponError(error)) {
                 const responseData = error.response?.data || {};
@@ -231,9 +172,7 @@ const Checkout = () => {
             } else {
                 setCheckoutError(
                     error.response?.data?.message
-                        || (paymentMethod === "STRIPE"
-                            ? "Unable to start Stripe payment. Please try again."
-                            : "Unable to place the order. Please try again.")
+                        || "Unable to place the order through WhatsApp. Please try again."
                 );
             }
 
@@ -270,7 +209,7 @@ const Checkout = () => {
 
                 <p className="life-line-checkout-subtitle">
 
-                    Choose Stripe, Cash on Delivery, or send your order through WhatsApp.
+                    Add your delivery details, then continue directly to WhatsApp.
 
                 </p>
 
@@ -404,51 +343,18 @@ const Checkout = () => {
 
                             <p>
 
-                                Pay securely with Stripe, or choose Cash on Delivery or WhatsApp.
+                                Your order will be confirmed through WhatsApp.
 
                             </p>
 
-                            <label className={`life-line-payment-option ${paymentMethod === "STRIPE" ? "active" : ""}`}>
-                                <input
-                                    type="radio"
-                                    name="payment-method"
-                                    value="STRIPE"
-                                    checked={paymentMethod === "STRIPE"}
-                                    onChange={() => setPaymentMethod("STRIPE")}
-                                />
-                                <span>
-                                    <strong>Pay securely with Stripe</strong>
-                                    <small>Complete your payment on Stripe's secure checkout page.</small>
-                                </span>
-                            </label>
-
-                            <label className={`life-line-payment-option ${paymentMethod === "COD" ? "active" : ""}`}>
-                                <input
-                                    type="radio"
-                                    name="payment-method"
-                                    value="COD"
-                                    checked={paymentMethod === "COD"}
-                                    onChange={() => setPaymentMethod("COD")}
-                                />
-                                <span>
-                                    <strong>Cash on Delivery (COD)</strong>
-                                    <small>Pay in cash when your order is delivered.</small>
-                                </span>
-                            </label>
-
-                            <label className={`life-line-payment-option ${paymentMethod === "WHATSAPP" ? "active" : ""}`}>
-                                <input
-                                    type="radio"
-                                    name="payment-method"
-                                    value="WHATSAPP"
-                                    checked={paymentMethod === "WHATSAPP"}
-                                    onChange={() => setPaymentMethod("WHATSAPP")}
-                                />
-                                <span>
-                                    <strong>Order through WhatsApp</strong>
-                                    <small>Open WhatsApp with your order details ready to send.</small>
-                                </span>
-                            </label>
+                            {CHECKOUT_PAYMENT_OPTIONS.map((option) => (
+                                <div className="life-line-payment-option active" key={option.value}>
+                                    <span>
+                                        <strong>{option.title}</strong>
+                                        <small>{option.description}</small>
+                                    </span>
+                                </div>
+                            ))}
 
                         </div>
 
@@ -659,11 +565,7 @@ const Checkout = () => {
 
                                     :
 
-                                    paymentMethod === "STRIPE"
-                                        ? "Continue to Stripe"
-                                        : paymentMethod === "WHATSAPP"
-                                            ? "Continue via WhatsApp"
-                                            : "Place COD Order"
+                                    "Continue via WhatsApp"
 
                             }
 
@@ -671,11 +573,7 @@ const Checkout = () => {
 
                         <p className="life-line-payment-note">
 
-                            {paymentMethod === "STRIPE"
-                                ? "You will be redirected to Stripe to complete your payment securely."
-                                : paymentMethod === "WHATSAPP"
-                                ? "Your order details will open in WhatsApp for confirmation."
-                                : "Payment will be collected in cash when your order is delivered."}
+                            "Your name, phone, address, items, and total will open in WhatsApp."
 
                         </p>
 
