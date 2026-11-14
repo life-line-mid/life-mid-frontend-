@@ -28,3 +28,4 @@ dist-ssr
 .env.production
 build/
 .env*
+!.env.example
