@@ -23,7 +23,15 @@ describe("WhatsApp-only checkout", () => {
             postal_code: "00000",
             country: "UAE",
         };
-        const items = [{ product_name: "Nitrile Gloves", quantity: 2, variant_size: null }];
+        const items = [{
+            product_name: "Nitrile Gloves",
+            quantity: 2,
+            variant_size: 7,
+            unit_type: "Box",
+            size: "100 pieces",
+            color: "Blue",
+            total_price: "25.50",
+        }];
 
         const message = buildWhatsAppCheckoutMessage({
             orderId: 12,
@@ -37,7 +45,11 @@ describe("WhatsApp-only checkout", () => {
         expect(url).toContain("https://wa.me/971562637379?text=");
         expect(message).toContain("Azhar");
         expect(message).toContain("Al Nahda");
-        expect(message).toContain("Dubai, Dubai, 00000");
+        expect(message).toContain("City/Emirate: Dubai, Dubai");
+        expect(message).toContain("Postal code: 00000");
+        expect(message).toContain("Box: 100 pieces");
+        expect(message).toContain("Color: Blue");
+        expect(message).toContain("AED 25.50");
         expect(decodeURIComponent(url)).toContain("Nitrile Gloves");
     });
 });

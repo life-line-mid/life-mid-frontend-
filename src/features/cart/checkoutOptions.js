@@ -13,10 +13,15 @@ export const CHECKOUT_WHATSAPP_NUMBER = "971562637379";
 
 export function buildWhatsAppCheckoutMessage({ orderId, address = {}, items = [], total }) {
     const itemLines = items.map((item) => {
-        const variant = item.variant_size !== null && item.size
-            ? `, ${item.unit_type || "Option"}: ${item.size}`
+        const variantDetails = [
+            item.size ? `${item.unit_type || "Option"}: ${item.size}` : item.unit_type,
+            item.color ? `Color: ${item.color}` : "",
+        ].filter(Boolean);
+        const variant = variantDetails.length ? ` (${variantDetails.join(", ")})` : "";
+        const lineTotal = item.total_price !== null && item.total_price !== undefined
+            ? ` = AED ${Number(item.total_price || 0).toFixed(2)}`
             : "";
-        return `- ${item.product_name}${variant} x ${item.quantity}`;
+        return `- ${item.product_name || "Product"}${variant} x ${item.quantity}${lineTotal}`;
     });
 
     return [
@@ -30,11 +35,12 @@ export function buildWhatsAppCheckoutMessage({ orderId, address = {}, items = []
         `Total: AED ${Number(total || 0).toFixed(2)}`,
         "",
         "Delivery address:",
-        address.full_name,
-        address.phone,
-        address.address_line,
-        `${address.city || ""}${address.emirate ? `, ${address.emirate}` : ""}${address.postal_code ? `, ${address.postal_code}` : ""}`,
-        address.country,
+        `Name: ${address.full_name || ""}`,
+        `Phone: ${address.phone || ""}`,
+        `Address: ${address.address_line || ""}`,
+        `City/Emirate: ${address.city || ""}${address.emirate ? `, ${address.emirate}` : ""}`,
+        `Postal code: ${address.postal_code || ""}`,
+        `Country: ${address.country || ""}`,
     ].join("\n");
 }
 
